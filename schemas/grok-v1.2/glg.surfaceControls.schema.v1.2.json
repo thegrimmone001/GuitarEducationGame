@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "glg.surfaceControls.schema.v1.2",
+  "title": "GLG Surface Controls (v1.2)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["controls"],
+  "properties": {
+    "controls": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "role", "scope", "enabled"],
+        "properties": {
+          "id": { "type": "string" },
+          "role": { "enum": ["fretboard", "noteNames", "chordLabels", "scaleHighlights", "progression", "timerOverlay", "tonalAssist"] },
+          "scope": { "enum": ["global", "match", "editor"] },
+          "samMode": { "enum": ["auto", "manual", "locked"] },
+          "enabled": { "type": "boolean" },
+          "zIndex": { "type": "integer" }
+        }
+      }
+    }
+  }
+}

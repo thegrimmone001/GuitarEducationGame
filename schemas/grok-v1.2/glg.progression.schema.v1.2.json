@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "glg.progression.schema.v1.2",
+  "title": "GLG Progression (v1.2)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id","steps"],
+  "properties": {
+    "id": { "type": "string" },
+    "steps": { "type": "array", "items": { "type": "string" } },
+    "override": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "key": { "$ref": "glg.pitchSet.chord.schema.v1.2#/$defs/noteName" },
+        "romanNumerals": { "type": "boolean" }
+      }
+    }
+  }
+}

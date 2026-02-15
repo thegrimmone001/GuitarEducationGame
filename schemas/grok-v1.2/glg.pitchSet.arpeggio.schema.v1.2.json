@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "glg.pitchSet.arpeggio.schema.v1.2",
+  "title": "GLG Pitch Set — Arpeggio (v1.2)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "enabled", "kind", "definition"],
+  "properties": {
+    "id": { "type": "string" },
+    "enabled": { "type": "boolean" },
+    "kind": { "type": "string", "const": "arpeggio" },
+    "label": { "type": "string" },
+    "definition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["chordRef","notes"],
+      "properties": {
+        "chordRef": { "type": "string" },
+        "notes": { "type": "array", "items": { "$ref": "#/$defs/noteName" } },
+        "order": { "enum": ["up","down","random"] }
+      }
+    }
+  },
+  "$defs": {
+    "noteName": { "enum": ["C","C#","Db","D","D#","Eb","E","F","F#","Gb","G","G#","Ab","A","A#","Bb","B"] }
+  }
+}

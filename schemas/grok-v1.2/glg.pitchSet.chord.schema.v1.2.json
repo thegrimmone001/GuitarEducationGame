@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "glg.pitchSet.chord.schema.v1.2",
+  "title": "GLG Pitch Set — Chord (v1.2)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "enabled", "kind", "definition"],
+  "properties": {
+    "id": { "type": "string" },
+    "enabled": { "type": "boolean" },
+    "kind": { "type": "string", "const": "chord" },
+    "label": { "type": "string" },
+    "definition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "quality"],
+      "properties": {
+        "root": { "$ref": "#/$defs/noteName" },
+        "quality": { "enum": ["major","minor","dim","aug","maj7","min7","dom7","halfdim7","dim7","sus2","sus4","add9"] },
+        "notes": { "type": "array", "items": { "$ref": "#/$defs/noteName" }, "minItems": 3 },
+        "inversion": { "type": "integer", "minimum": 0, "maximum": 3 }
+      }
+    }
+  },
+  "$defs": {
+    "noteName": { "enum": ["C","C#","Db","D","D#","Eb","E","F","F#","Gb","G","G#","Ab","A","A#","Bb","B"] }
+  }
+}
