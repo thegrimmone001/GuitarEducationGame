@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "glg.matchOptions.schema.v1.1",
+  "title": "GLG MatchOptions (v1.1) — UI Output Contract",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["surfaceControlsV11"],
+  "properties": {
+    "surfaceControlsV11": { "$ref": "glg.surfaceControls.schema.v1.1" },
+    "timersV11": { "$ref": "glg.timers.schema.v1.1" },
+    "progressionsV11": { "$ref": "glg.progression.schema.v1.1" },
+    "pitchSetsV11": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["intervals", "chords", "scalesModes", "arpeggios"],
+      "properties": {
+        "intervals": { "type": "array", "items": { "$ref": "glg.pitchSet.interval.schema.v1.1" } },
+        "chords": { "type": "array", "items": { "$ref": "glg.pitchSet.chord.schema.v1.1" } },
+        "scalesModes": { "type": "array", "items": { "$ref": "glg.pitchSet.scaleMode.schema.v1.1" } },
+        "arpeggios": { "type": "array", "items": { "$ref": "glg.pitchSet.arpeggio.schema.v1.1" } }
+      }
+    },
+    "systemSettingsV11": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tonalAssist"],
+      "properties": {
+        "tonalAssist": { "$ref": "glg.tonalAssist.settings.schema.v1.1" }
+      }
+    }
+  }
+}

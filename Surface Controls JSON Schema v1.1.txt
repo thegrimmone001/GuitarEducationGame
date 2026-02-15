@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "glg.surfaceControls.schema.v1.1",
+  "title": "GLG Surface Controls",
+  "type": "object",
+  "required": ["surfaces"],
+  "properties": {
+    "surfaces": {
+      "type": "object",
+      "required": ["fretboard", "staff", "tab", "noteRail"],
+      "properties": {
+        "fretboard": { "$ref": "#/$defs/surfaceConfig" },
+        "staff": { "$ref": "#/$defs/surfaceConfig" },
+        "tab": { "$ref": "#/$defs/surfaceConfig" },
+        "noteRail": { "$ref": "#/$defs/surfaceConfig" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "scope": {
+      "type": "string",
+      "enum": ["single", "rotating", "all", "random"]
+    },
+    "coordination": {
+      "type": "object",
+      "required": ["mode"],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": [
+            "independent",
+            "singleSurfaceOnly",
+            "multiSurfaceSimultaneous",
+            "rotateBetweenSelected",
+            "randomSelectedSurface"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "roleConfig": {
+      "type": "object",
+      "required": ["enabled", "scope"],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "scope": { "$ref": "#/$defs/scope" },
+        "coordination": { "$ref": "#/$defs/coordination" }
+      },
+      "additionalProperties": false
+    },
+    "samConfig": {
+      "type": "object",
+      "required": ["enabled", "scope"],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "scope": { "$ref": "#/$defs/scope" }
+      },
+      "additionalProperties": false
+    },
+    "surfaceConfig": {
+      "type": "object",
+      "required": ["prompt", "mark", "persistence", "sam"],
+      "properties": {
+        "prompt": { "$ref": "#/$defs/roleConfig" },
+        "mark": { "$ref": "#/$defs/roleConfig" },
+        "persistence": { "$ref": "#/$defs/roleConfig" },
+        "sam": { "$ref": "#/$defs/samConfig" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

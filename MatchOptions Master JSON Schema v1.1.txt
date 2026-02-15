@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "glg.matchOptions.schema.v1.1",
+  "title": "GLG Match Options",
+  "type": "object",
+  "required": ["matchOptions"],
+  "properties": {
+    "matchOptions": {
+      "type": "object",
+      "required": [
+        "learningType",
+        "domain",
+        "answerRules",
+        "surfaceControls",
+        "timers",
+        "pitchSets",
+        "progression",
+        "tonalAssistSettingsRef"
+      ],
+      "properties": {
+        "learningType": { "type": "string", "enum": ["single", "multiplayer"] },
+
+        "domain": {
+          "type": "object",
+          "required": ["instrument", "tuning", "strings", "fretMin", "fretMax"],
+          "properties": {
+            "instrument": { "type": "string" },
+            "tuning": { "type": "string" },
+            "strings": { "type": "array", "items": { "type": "integer" } },
+            "fretMin": { "type": "integer", "minimum": 0 },
+            "fretMax": { "type": "integer", "minimum": 0 }
+          },
+          "additionalProperties": false
+        },
+
+        "answerRules": {
+          "type": "object",
+          "required": ["answerSet", "answerCount"],
+          "properties": {
+            "answerSet": {
+              "type": "string",
+              "enum": ["single", "equivalent", "octave", "all"]
+            },
+            "answerCount": { "type": "integer", "minimum": 1 },
+
+            "octaveRange": {
+              "type": "object",
+              "properties": {
+                "min": { "type": "integer" },
+                "max": { "type": "integer" }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+
+        "surfaceControls": {
+          "type": "object",
+          "description": "Must conform to glg.surfaceControls.schema.v1.1",
+          "required": ["surfaces"],
+          "properties": {
+            "surfaces": { "type": "object" }
+          },
+          "additionalProperties": true
+        },
+
+        "timers": {
+          "type": "object",
+          "required": ["turnTimer", "checkClock", "runtimeCap", "answerAttemptsPerTurn"],
+          "properties": {
+            "turnTimer": {
+              "type": "object",
+              "required": ["enabled", "seconds"],
+              "properties": {
+                "enabled": { "type": "boolean" },
+                "seconds": { "type": "integer", "minimum": 1 }
+              },
+              "additionalProperties": false
+            },
+
+            "checkClock": {
+              "type": "object",
+              "description": "AKA Chess Clock / Time Bank",
+              "required": ["enabled", "totalSeconds"],
+              "properties": {
+                "enabled": { "type": "boolean" },
+                "totalSeconds": { "type": "integer", "minimum": 1 }
+              },
+              "additionalProperties": false
+            },
+
+            "runtimeCap": {
+              "type": "object",
+              "required": ["enabled", "totalSeconds"],
+              "properties": {
+                "enabled": { "type": "boolean" },
+                "totalSeconds": { "type": "integer", "minimum": 1 }
+              },
+              "additionalProperties": false
+            },
+
+            "answerAttemptsPerTurn": {
+              "type": "object",
+              "required": ["enabled", "multipleAllowed"],
+              "properties": {
+                "enabled": { "type": "boolean" },
+                "multipleAllowed": { "type": "boolean" }
+              },
+              "additionalProperties": false
+            },
+
+            "timeAdjustments": {
+              "type": "object",
+              "properties": {
+                "increments": { "type": "integer" },
+                "penalties": { "type": "integer" },
+                "addSubtract": { "type": "integer" }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+
+        "pitchSets": {
+          "type": "object",
+          "required": ["enabled", "activeType", "refs"],
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "activeType": {
+              "type": "string",
+              "enum": ["none", "interval", "chord", "scaleMode", "arpeggio"]
+            },
+            "refs": {
+              "type": "object",
+              "properties": {
+                "interval": { "type": "string" },
+                "chord": { "type": "string" },
+                "scaleMode": { "type": "string" },
+                "arpeggio": { "type": "string" }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+
+        "progression": {
+          "type": "object",
+          "required": ["enabled"],
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "progressionId": { "type": "string" }
+          },
+          "additionalProperties": false
+        },
+
+        "tonalAssistSettingsRef": {
+          "type": "string",
+          "description": "Reference to system-level Tonal Assist settings object"
+        }
+      },
+      "additionalProperties": false,
+
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "answerRules": { "properties": { "answerSet": { "const": "octave" } } }
+            }
+          },
+          "then": {
+            "properties": {
+              "answerRules": { "required": ["octaveRange"] }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

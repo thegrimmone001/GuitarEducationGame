@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "glg.timers.schema.v1.1",
+  "title": "GLG Timers / Clocks (UI Output Contract)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["mode"],
+  "properties": {
+    "mode": {
+      "type": "string",
+      "enum": ["off", "turnTimer", "checkClock", "chessClock", "timeBank"],
+      "description": "Clock mode selector. checkClock is the canonical umbrella; chessClock and timeBank may be modeled explicitly for UI/serialization convenience."
+    },
+    "turnTimer": { "$ref": "#/$defs/enabledSeconds" },
+    "runtimeCap": { "$ref": "#/$defs/enabledSeconds" },
+    "attemptsPerTurn": { "$ref": "#/$defs/enabledInt" },
+
+    "timeBank": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "seconds": { "type": "integer", "minimum": 0, "maximum": 86400 },
+        "incrementSeconds": { "type": "integer", "minimum": 0, "maximum": 600 },
+        "penaltySeconds": { "type": "integer", "minimum": 0, "maximum": 600 },
+        "onCorrectAddSeconds": { "type": "integer", "minimum": 0, "maximum": 600 },
+        "onWrongSubtractSeconds": { "type": "integer", "minimum": 0, "maximum": 600 }
+      },
+      "required": ["enabled"],
+      "description": "Time Bank / add-subtract shell. Engine semantics are outside Phase B-2."
+    }
+  },
+  "$defs": {
+    "enabledSeconds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enabled", "seconds"],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "seconds": { "type": "integer", "minimum": 0, "maximum": 86400 }
+      }
+    },
+    "enabledInt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enabled", "value"],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "value": { "type": "integer", "minimum": 0, "maximum": 999 }
+      }
+    }
+  }
+}

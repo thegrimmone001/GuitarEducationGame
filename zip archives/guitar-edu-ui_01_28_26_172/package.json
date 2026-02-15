@@ -1,0 +1,36 @@
+{
+  "name": "guitar-edu-ui",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "node ./node_modules/vite/bin/vite.js",
+    "build": "node ./node_modules/typescript/bin/tsc -b && node ./node_modules/vite/bin/vite.js build",
+    "preview": "node ./node_modules/vite/bin/vite.js preview",
+    "test": "vitest",
+    "test:ci": "vitest run",
+    "e2e": "npm run build && start-server-and-test \"npm run preview -- --port 4173 --strictPort\" http://127.0.0.1:4173 \"playwright test\"",
+    "e2e:ui": "npm run build && start-server-and-test \"npm run preview -- --port 4173 --strictPort\" http://127.0.0.1:4173 \"playwright test --ui\"",
+    "check": "npm run typecheck && npm run build",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "tripwire:docs": "node tools/tripwire_docs_tree.mjs",
+    "tripwire:zip": "node tools/tripwire_zip_structure.mjs",
+    "tripwire": "npm run tripwire:docs",
+    "ci:local": "npm run tripwire:docs && npm run check:deprecated && npm run typecheck && npm run test:ci && npm run build",
+    "release:zip": "node tools/package_release.mjs && npm run tripwire:zip",
+    "check:deprecated": "node tools/check_deprecated_terms.mjs"
+  },
+  "dependencies": {
+    "idb-keyval": "^6.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@playwright/test": "^1.50.0",
+    "jsdom": "^24.1.3",
+    "start-server-and-test": "^2.0.11",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.2",
+    "vite-plugin-pwa": "^0.20.0",
+    "vitest": "^1.6.0"
+  }
+}

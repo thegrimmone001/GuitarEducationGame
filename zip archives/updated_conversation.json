@@ -1,0 +1,168 @@
+{
+  "meta": {
+    "project": "Guitar Learning Game",
+    "codename": "Guitar‑Edu‑UI",
+    "canonicalSystem": "Roman Numeral Interval System",
+    "status": "active development",
+    "lastUpdated": "2026-01-18",
+    "source": "conversation.json + recent chat canon"
+  },
+
+  "scope": {
+    "purpose": "Interactive music education and skill reinforcement through game mechanics",
+    "domains": ["education", "practice", "assessment", "exploration"],
+    "supportedModes": ["Single Player", "Multiplayer", "Education", "Exploration"],
+    "nonGoals": ["DAW replacement", "notation editor", "audio effects processor"]
+  },
+
+  "coreConcepts": {
+    "learningTypes": {
+      "singleNote": "Identify and place individual pitches",
+      "intervals": "Identify distance relationships using Roman Numerals",
+      "chords": "Triads, sevenths, inversions, and voicings",
+      "scales": "Modal, chromatic, pentatonic, blues, and diatonic collections",
+      "arpeggios": "Broken chord structures and pattern-based execution"
+    },
+
+    "pitchFramework": {
+      "system": "Roman Numeral Interval",
+      "concertPitch": true,
+      "staffDrivesPitch": true,
+      "accidentals": ["naturals", "sharps", "flats"],
+      "collections": [
+        "chromatic",
+        "ionian",
+        "aeolian",
+        "dorian",
+        "phrygian",
+        "lydian",
+        "mixolydian",
+        "locrian",
+        "pentatonic",
+        "blues"
+      ]
+    }
+  },
+
+  "matchConfiguration": {
+    "players": {
+      "count": 1,
+      "board": "shared"
+    },
+
+    "instrumentContext": {
+      "instrument": "guitar",
+      "tuning": "standard",
+      "strings": [6,5,4,3,2,1],
+      "fretRange": {"min": 0, "max": 12},
+      "span": 4
+    },
+
+    "startBehavior": {
+      "autoStart": false,
+      "engageAction": "playerInitiated",
+      "intermissionBetweenTurns": true
+    }
+  },
+
+  "surfaces": {
+    "fretboard": {
+      "role": "primary spatial input",
+      "prompt": true,
+      "mark": true,
+      "display": true,
+      "sam": true,
+      "notesPersistOnCorrect": true
+    },
+    "staff": {
+      "role": "pitch authority",
+      "prompt": false,
+      "mark": true,
+      "display": true,
+      "sam": false,
+      "horizontalScroll": true
+    },
+    "tab": {
+      "role": "string/fret reference",
+      "prompt": false,
+      "mark": true,
+      "display": true,
+      "sam": false
+    },
+    "noteRail": {
+      "role": "primary prompt rail",
+      "prompt": true,
+      "mark": false,
+      "display": true,
+      "sam": false
+    }
+  },
+
+  "inputSystem": {
+    "methods": ["mouse", "keyboard", "touch"],
+    "validation": "post‑input",
+    "incorrectBehavior": "removeOnlyIncorrect",
+    "shortcuts": {
+      "rightClick": "contextualAnswerMenu"
+    }
+  },
+
+  "rules": {
+    "difficulty": "medium",
+    "accuracyScope": "singleDomain",
+    "timer": {
+      "enabled": false,
+      "turnTimer": false,
+      "timeAddedOnCorrect": true
+    }
+  },
+
+  "scoringSystem": {
+    "segments": {
+      "description": "Connective scoring paths on fretboard",
+      "length": 4,
+      "vulnerability": {
+        "missThreshold": 3,
+        "visualCue": "blink"
+      },
+      "stealRules": {
+        "allowed": true,
+        "onlyOnComplete": true,
+        "penaltyApplied": true
+      }
+    },
+
+    "bonuses": {
+      "combo": true,
+      "shapePatterns": ["linear", "U", "W", "extended"],
+      "timePurchase": true
+    }
+  },
+
+  "endgame": {
+    "definition": "Multiplayer conditional phase triggered by blackout",
+    "trigger": "blackout",
+    "allowedActions": ["steal", "bonusRound", "timePurchase"],
+    "exitCondition": "initiatorLastTurn"
+  },
+
+  "menus": {
+    "main": ["Single Note", "Intervals", "Chords", "Scales", "Arpeggios"],
+    "core": ["Key", "Accidentals", "Fret Range", "Instrument", "Tuning"],
+    "advanced": ["Inversions", "IntervalDisplay", "ArpeggioPatterns"],
+    "system": ["Audio Settings", "Visual Feedback", "Help"],
+    "devTools": {
+      "visibility": "hidden",
+      "unlock": "fiveClicksOnVersion"
+    }
+  },
+
+  "logging": {
+    "eventLog": true,
+    "runtimeTests": {
+      "interval": 15,
+      "startingBuild": 90
+    },
+    "privacy": "anonymized"
+  }
+}

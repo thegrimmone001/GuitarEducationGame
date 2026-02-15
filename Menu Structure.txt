@@ -1,0 +1,128 @@
+Main Menu (Root)
+┌───────────────────────────────┐
+│        GUITAR LEARNING GAME   │
+│                               │
+│  Single Player                │
+│  Multiplayer                  │
+│  Education                    │
+│  Settings                     │
+│  FAQ / Help                   │
+│                               │
+└───────────────────────────────┘
+
+Single Player
+2A. Free Play
+
+Main Menu
+└─ Single Player
+   └─ Free Play
+      └─ Match Settings
+         └─ Advanced  ▶ (Wing)
+             ├─ Surface Controls
+             ├─ Pitch Sets
+             ├─ Progressions
+             ├─ Timers
+             └─ System
+
+2B. Challenge
+
+Main Menu
+└─ Single Player
+   └─ Challenge
+      └─ Match Settings
+         └─ Advanced ▶ (Wing)
+             └─ [same Advanced submenus]
+
+3. Multiplayer
+
+Main Menu
+└─ Multiplayer
+   └─ Players
+      └─ Match Settings
+         └─ Advanced ▶ (Wing)
+             └─ [same Advanced submenus]
+
+Match Settings (Shared Across Modes)
+
+┌────────────────────────────────────────┐
+│ Match Settings                         │
+│ ┌───────────────┐  ┌─────────────────┐ │
+│ │ Core Settings │  │  Playfield      │ │
+│ │ (basic)       │  │  (visible)      │ │
+│ │               │  │                 │ │
+│ │ [Advanced ▶]  │  │                 │ │
+│ └───────────────┘  └─────────────────┘ │
+└────────────────────────────────────────┘
+
+5. Advanced Wing (Critical)
+
+┌──────────────────────────────────────────────────────────┐
+│ ADVANCED MATCH SETTINGS  (Right Flyout Wing)             │
+│                                                          │
+│ ┌──────────────────────────────────────────────────────┐ │
+│ │ TOP HEADER                                           │ │
+│ │                                                      │ │
+│ │ Instrument Settings                                  │ │
+│ │ ┌──────────────────────┬──────────────────────────┐  │ │
+│ │ │ Instrument           │ Tuning                   │  │ │
+│ │ │ Strings / Range      │ Capo / Transpose         │  │ │
+│ │ └──────────────────────┴──────────────────────────┘  │ │
+│ └──────────────────────────────────────────────────────┘ │
+│                                                          │
+│ ┌──────────────────────────────────────────────────────┐ │
+│ │ Presets A–J (Fixed Row)                              │ │
+│ └──────────────────────────────────────────────────────┘ │
+│                                                          │
+│ ┌───────────────────────┬──────────────────────────────┐ │
+│ │ COLUMN A (MECHANICS)  │ COLUMN B (PITCH INTENT)      │ │
+│ │                       │                              │ │
+│ │ Surface Controls      │ Mode Selector                │ │
+│ │ Pitch Set Source      │  ○ Single Note               │ │
+│ │  - Intervals          │  ○ Interval                  │ │
+│ │  - Chords             │  ○ Chord                     │ │
+│ │  - Scales / Modes     │  ○ Scale / Mode              │ │
+│ │  - Arpeggios          │  ○ Arpeggio                  │ │
+│ │                       │  ○ Progression               │ │
+│ │                       │                              │ │
+│ │                       │ Context-Specific Controls    │ │
+│ │                       │ (changes by mode only)       │ │
+│ ├───────────────────────┼──────────────────────────────┤ │
+│ │ COLUMN A – BOTTOM     │ COLUMN B – BOTTOM            │ │
+│ │ (RULES / CONSTRAINTS) │ (ASSISTIVE / ANALYSIS)       │ │
+│ │                       │                              │ │
+│ │ Timers                │ Tonal Assist                 │ │
+│ │ Board Rules           │ (read-only guidance)         │ │
+│ │ Attempts / Penalties  │                              │ │
+│ │ Match Constraints     │                              │ │
+│ │ Misc.                 │                              │ │
+│ └───────────────────────┴──────────────────────────────┘ │
+│                                                          │
+└──────────────────────────────────────────────────────────┘
+
+
+
+6. Settings (Non-Match)
+
+Main Menu
+└─ Settings
+   ├─ Game
+   ├─ Preferences
+   ├─ Audio
+   └─ Graphics
+
+7. Education
+
+Main Menu
+└─ Education
+   ├─ To Main UI (Practice Mode)
+   └─ Lessons
+
+8. FAQ / Help
+
+Main Menu
+└─ FAQ / Help
+   ├─ FAQ
+   │   └─ Topic
+   │       └─ Topic Page(s)
+   ├─ Help
+   └─ Tutorials

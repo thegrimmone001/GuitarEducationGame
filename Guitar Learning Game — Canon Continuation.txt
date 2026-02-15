@@ -1,0 +1,240 @@
+{
+  "registry": {
+    "name": "GLG Schema Registry",
+    "version": "v1.1",
+    "purpose": "Canonical schema ID/version map for validation across GLG subsystems.",
+    "schemas": [
+      {
+        "id": "glg.matchOptions.schema.v1.1",
+        "name": "MatchOptions Master",
+        "version": "1.1",
+        "category": "match",
+        "required": true,
+        "notes": [
+          "Top-level contract for a match.",
+          "References Surface Controls, Pitch Sets, Progressions, Timers, Answer Rules, Tonal Assist settings ref."
+        ]
+      },
+      {
+        "id": "glg.surfaceControls.schema.v1.1",
+        "name": "Surface Controls",
+        "version": "1.1",
+        "category": "surfaces",
+        "required": true,
+        "notes": [
+          "Prompt / Mark / Persistence / SAM only.",
+          "Scope per role: single | rotating | all | random."
+        ]
+      },
+      {
+        "id": "glg.progression.schema.v1.1",
+        "name": "Progression",
+        "version": "1.1",
+        "category": "music",
+        "required": false,
+        "notes": [
+          "Supports mode-aware degrees.",
+          "Supports per-step overrides (borrowed chords, secondary dominants)."
+        ]
+      },
+      {
+        "id": "glg.pitchSet.chord.schema.v1.1",
+        "name": "Pitch Set: Chords",
+        "version": "1.1",
+        "category": "pitchSets",
+        "required": false,
+        "notes": [
+          "Builder | Bank | Hybrid.",
+          "Source: byKey (diatonic enforced) | byRoot."
+        ]
+      },
+      {
+        "id": "glg.pitchSet.scaleMode.schema.v1.1",
+        "name": "Pitch Set: Scale/Mode",
+        "version": "1.1",
+        "category": "pitchSets",
+        "required": false,
+        "notes": [
+          "Pattern families included (NPS, Position/Box, Linear, Intervallic, Directional, Chromatic/Hybrid).",
+          "Includes Minor Blues + Major Blues identities.",
+          "Supports pentatonic boxes 1–5 via Position/Box."
+        ]
+      },
+      {
+        "id": "glg.pitchSet.arpeggio.schema.v1.1",
+        "name": "Pitch Set: Arpeggios",
+        "version": "1.1",
+        "category": "pitchSets",
+        "required": false,
+        "notes": [
+          "Derived from Chord or Scale/Mode pitch sets.",
+          "Order/motion + termination rules."
+        ]
+      },
+      {
+        "id": "glg.pitchSet.interval.schema.v1.1",
+        "name": "Pitch Set: Intervals",
+        "version": "1.1",
+        "category": "pitchSets",
+        "required": false,
+        "notes": [
+          "Fixed vs relative reference.",
+          "Compound interval allowance supported."
+        ]
+      },
+      {
+        "id": "glg.tonalAssist.settings.schema.v1.1",
+        "name": "Tonal Assist Settings",
+        "version": "1.1",
+        "category": "system",
+        "required": true,
+        "notes": [
+          "Includes Blues candidates (minorBlues, majorBlues).",
+          "Advanced-menu invocation analyzes the current edited object (contracted behavior)."
+        ]
+      },
+      {
+        "id": "glg.tonalAssist.output.schema.v1.1",
+        "name": "Tonal Assist Output Contract",
+        "version": "1.1",
+        "category": "system",
+        "required": false,
+        "notes": [
+          "Suggestions payload + confidence + explainability ('why').",
+          "Add/Replace targets encoded for deterministic UI actions."
+        ]
+      }
+    ],
+    "validationProfiles": [
+      {
+        "name": "Match Validation (Core)",
+        "requires": [
+          "glg.matchOptions.schema.v1.1",
+          "glg.surfaceControls.schema.v1.1",
+          "glg.tonalAssist.settings.schema.v1.1"
+        ],
+        "optional": [
+          "glg.progression.schema.v1.1",
+          "glg.pitchSet.chord.schema.v1.1",
+          "glg.pitchSet.scaleMode.schema.v1.1",
+          "glg.pitchSet.arpeggio.schema.v1.1",
+          "glg.pitchSet.interval.schema.v1.1",
+          "glg.tonalAssist.output.schema.v1.1"
+        ]
+      },
+      {
+        "name": "Pitch Set Library Validation",
+        "requires": [
+          "glg.pitchSet.chord.schema.v1.1",
+          "glg.pitchSet.scaleMode.schema.v1.1",
+          "glg.pitchSet.arpeggio.schema.v1.1",
+          "glg.pitchSet.interval.schema.v1.1"
+        ],
+        "optional": []
+      },
+      {
+        "name": "Progression LibraryGuitar Learning Game — Canon Continuation (NO NEW DESIGN PHASE)
+
+You are continuing an existing, long-running Guitar Learning Game project.
+This is not a new design phase.
+
+A) Canon Priority (Non-Negotiable)
+Treat the following as authoritative sources of truth, in this order:
+1) Guitar_Learning_Game_Authoritative_System_Manual_v1_0_EXHAUSTIVE.docx
+2) MTL_MASTER_TIMELINE_LEDGER.md
+3) GLG_CONVERSATION_LEDGER.md
+4) GLG_CONVERSATION_INDEX_GUITAR_GAME_sorted.json / .csv
+5) Latest verified build archives (including guitar-edu-ui_01_25_26_148.zip and prior)
+
+Conflict rules:
+- Documents override chat memory
+- Later timestamps override earlier
+- No assumptions allowed
+- If unsure → ask before proceeding
+
+B) Locked Definitions (Must Not Drift)
+1) Answer Sets
+- Single: one specific instance
+- Equivalent: same staff note AND same octave mapped to all valid fretboard locations producing that exact pitch (octave differences NOT equivalent)
+- Octave (future/current supported): same note name across a defined octave range
+- All (future): all instances of the same note name
+
+2) Visibility vs Persistence
+- Boards are always visible
+- “Persistence” = whether correct answers remain after marking
+- Persistence configurable per surface
+- “display/visible/visibility” are deprecated terms for this concept
+
+3) Answer Set ≠ Answer Count
+Default:
+- Answer Set = Single
+- Answer Count = 1
+
+4) Surface Controls (Canon Roles)
+Surface roles are exactly:
+- Prompt
+- Mark
+- Persistence
+- SAM (Show After Mark)
+Each role supports Surface Scope: single | rotating | all | random
+Coordination exists for Prompt/Mark/Persistence (multi-surface behavior), SAM does not require coordination.
+
+5) Presets A–J (Locked Intent)
+- A–G: Note Rail → Fretboard/Staff/TAB (various combinations)
+- H–J: Board → Note Rail (recognition direction)
+No renaming. Descriptions may be clarified but not reinterpreted.
+For H/I/J: Note Rail should NOT persist by default; FB/ST/TAB should (persistence flipped vs earlier draft).
+
+C) Current Phase / Where to Resume
+Resume at:
+Phase B-2 — Preset Definition Table + JSON Schema + Menu Completion
+
+What is already locked:
+- Pitch Sets (Scale/Mode, Chord, Arpeggio, Interval) conceptual design + Blues scales added
+- Progressions system design supports mode-aware degrees, borrowed chords, secondary dominants via per-step overrides
+- Tonal Assist:
+  - Lives in Gameplay Misc Information Panel
+  - Also callable from Advanced Menu builders as a guide that analyzes the CURRENT edited object
+  - System Menu includes tuning (scope/sensitivity/suggestions); candidates include Major, Minor variants, Modes, and Major/Minor Blues
+
+D) Strict Process Rules
+❌ Do not invent features
+❌ Do not rename canon terms
+❌ Do not collapse concepts for convenience
+❌ Do not write engine logic until menu + contracts are validated
+✅ Update documents when decisions are made
+✅ Ask only when ambiguous
+✅ Educational system first, game second
+
+E) Immediate Task
+Finish the menu implementation per canon:
+- Playfield is NOT part of menu structure; menus overlay the playfield
+- Advanced Menu uses a larger dual-column wing layout with no scrolling
+- Implement UI shells for:
+  1) Surface Controls (Prompt/Mark/Persistence/SAM per surface)
+  2) Pitch Sets (Intervals/Chords/Scales-Modes/Arpeggios)
+  3) Progressions (builder + per-step overrides)
+  4) Timers (Turn Timer, Check Clock/Chess Clock/Time Bank, Runtime Cap, Attempts per Turn, increments/penalties/add-subtract)
+  5) System → Tonal Assist settings
+No engine wiring yet; output must serialize to the locked schemas.
+
+Use this archive as current base:
+- guitar-edu-ui_01_25_26_148.zip
+
+First response requirements:
+- Acknowledge canon sources
+- Restate locked definitions briefly
+- Confirm Phase B-2
+- Then proceed
+ Validation",
+        "requires": ["glg.progression.schema.v1.1"],
+        "optional": ["glg.pitchSet.chord.schema.v1.1", "glg.pitchSet.scaleMode.schema.v1.1"]
+      },
+      {
+        "name": "Tonal Assist Validation",
+        "requires": ["glg.tonalAssist.settings.schema.v1.1"],
+        "optional": ["glg.tonalAssist.output.schema.v1.1"]
+      }
+    ]
+  }
+}

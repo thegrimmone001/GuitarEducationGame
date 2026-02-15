@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "glg.pitchSet.chord.schema.v1.1",
+  "title": "GLG Chord Pitch Set",
+  "type": "object",
+  "required": ["id", "type", "mode", "source", "constraints", "tonal"],
+  "properties": {
+    "id": { "type": "string" },
+    "type": { "const": "chord" },
+
+    "mode": {
+      "type": "string",
+      "enum": ["builder", "bank", "hybrid"]
+    },
+
+    "source": {
+      "type": "string",
+      "enum": ["byKey", "byRoot"]
+    },
+
+    "builder": {
+      "type": "object",
+      "properties": {
+        "qualities": { "type": "array", "items": { "type": "string" } },
+        "extensions": { "type": "array", "items": { "type": "string" } },
+        "alterations": { "type": "array", "items": { "type": "string" } },
+        "allowSlash": { "type": "boolean" }
+      }
+    },
+
+    "bank": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+
+    "constraints": {
+      "type": "object",
+      "required": ["strings", "span"],
+      "properties": {
+        "strings": {
+          "type": "object",
+          "properties": {
+            "allowed": { "type": "array", "items": { "type": "integer" } },
+            "min": { "type": "integer" },
+            "max": { "type": "integer" }
+          }
+        },
+        "span": {
+          "type": "object",
+          "properties": {
+            "min": { "type": "integer" },
+            "max": { "type": "integer" }
+          }
+        }
+      }
+    },
+
+    "tonal": {
+      "type": "object",
+      "required": ["diatonicEnforced"],
+      "properties": {
+        "diatonicEnforced": { "type": "boolean" },
+        "tonalAssist": { "type": "object" }
+      }
+    }
+  },
+  "additionalProperties": false
+}

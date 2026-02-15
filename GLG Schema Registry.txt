@@ -1,0 +1,147 @@
+{
+  "registry": {
+    "name": "GLG Schema Registry",
+    "version": "v1.1",
+    "purpose": "Canonical schema ID/version map for validation across GLG subsystems.",
+    "schemas": [
+      {
+        "id": "glg.matchOptions.schema.v1.1",
+        "name": "MatchOptions Master",
+        "version": "1.1",
+        "category": "match",
+        "required": true,
+        "notes": [
+          "Top-level contract for a match.",
+          "References Surface Controls, Pitch Sets, Progressions, Timers, Answer Rules, Tonal Assist settings ref."
+        ]
+      },
+      {
+        "id": "glg.surfaceControls.schema.v1.1",
+        "name": "Surface Controls",
+        "version": "1.1",
+        "category": "surfaces",
+        "required": true,
+        "notes": [
+          "Prompt / Mark / Persistence / SAM only.",
+          "Scope per role: single | rotating | all | random."
+        ]
+      },
+      {
+        "id": "glg.progression.schema.v1.1",
+        "name": "Progression",
+        "version": "1.1",
+        "category": "music",
+        "required": false,
+        "notes": [
+          "Supports mode-aware degrees.",
+          "Supports per-step overrides (borrowed chords, secondary dominants)."
+        ]
+      },
+      {
+        "id": "glg.pitchSet.chord.schema.v1.1",
+        "name": "Pitch Set: Chords",
+        "version": "1.1",
+        "category": "pitchSets",
+        "required": false,
+        "notes": [
+          "Builder | Bank | Hybrid.",
+          "Source: byKey (diatonic enforced) | byRoot."
+        ]
+      },
+      {
+        "id": "glg.pitchSet.scaleMode.schema.v1.1",
+        "name": "Pitch Set: Scale/Mode",
+        "version": "1.1",
+        "category": "pitchSets",
+        "required": false,
+        "notes": [
+          "Pattern families included (NPS, Position/Box, Linear, Intervallic, Directional, Chromatic/Hybrid).",
+          "Includes Minor Blues + Major Blues identities.",
+          "Supports pentatonic boxes 1–5 via Position/Box."
+        ]
+      },
+      {
+        "id": "glg.pitchSet.arpeggio.schema.v1.1",
+        "name": "Pitch Set: Arpeggios",
+        "version": "1.1",
+        "category": "pitchSets",
+        "required": false,
+        "notes": [
+          "Derived from Chord or Scale/Mode pitch sets.",
+          "Order/motion + termination rules."
+        ]
+      },
+      {
+        "id": "glg.pitchSet.interval.schema.v1.1",
+        "name": "Pitch Set: Intervals",
+        "version": "1.1",
+        "category": "pitchSets",
+        "required": false,
+        "notes": [
+          "Fixed vs relative reference.",
+          "Compound interval allowance supported."
+        ]
+      },
+      {
+        "id": "glg.tonalAssist.settings.schema.v1.1",
+        "name": "Tonal Assist Settings",
+        "version": "1.1",
+        "category": "system",
+        "required": true,
+        "notes": [
+          "Includes Blues candidates (minorBlues, majorBlues).",
+          "Advanced-menu invocation analyzes the current edited object (contracted behavior)."
+        ]
+      },
+      {
+        "id": "glg.tonalAssist.output.schema.v1.1",
+        "name": "Tonal Assist Output Contract",
+        "version": "1.1",
+        "category": "system",
+        "required": false,
+        "notes": [
+          "Suggestions payload + confidence + explainability ('why').",
+          "Add/Replace targets encoded for deterministic UI actions."
+        ]
+      }
+    ],
+    "validationProfiles": [
+      {
+        "name": "Match Validation (Core)",
+        "requires": [
+          "glg.matchOptions.schema.v1.1",
+          "glg.surfaceControls.schema.v1.1",
+          "glg.tonalAssist.settings.schema.v1.1"
+        ],
+        "optional": [
+          "glg.progression.schema.v1.1",
+          "glg.pitchSet.chord.schema.v1.1",
+          "glg.pitchSet.scaleMode.schema.v1.1",
+          "glg.pitchSet.arpeggio.schema.v1.1",
+          "glg.pitchSet.interval.schema.v1.1",
+          "glg.tonalAssist.output.schema.v1.1"
+        ]
+      },
+      {
+        "name": "Pitch Set Library Validation",
+        "requires": [
+          "glg.pitchSet.chord.schema.v1.1",
+          "glg.pitchSet.scaleMode.schema.v1.1",
+          "glg.pitchSet.arpeggio.schema.v1.1",
+          "glg.pitchSet.interval.schema.v1.1"
+        ],
+        "optional": []
+      },
+      {
+        "name": "Progression Library Validation",
+        "requires": ["glg.progression.schema.v1.1"],
+        "optional": ["glg.pitchSet.chord.schema.v1.1", "glg.pitchSet.scaleMode.schema.v1.1"]
+      },
+      {
+        "name": "Tonal Assist Validation",
+        "requires": ["glg.tonalAssist.settings.schema.v1.1"],
+        "optional": ["glg.tonalAssist.output.schema.v1.1"]
+      }
+    ]
+  }
+}

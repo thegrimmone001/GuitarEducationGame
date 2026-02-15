@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "glg.pitchSet.scaleMode.schema.v1.1",
+  "title": "GLG Scale/Mode Pitch Set",
+  "type": "object",
+  "required": ["id", "type", "identity", "pattern", "constraints", "tonal"],
+  "properties": {
+    "id": { "type": "string" },
+    "type": { "const": "scaleMode" },
+
+    "identity": {
+      "type": "object",
+      "required": ["name", "rootPolicy"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "enum": [
+            "Major",
+            "Natural Minor",
+            "Harmonic Minor",
+            "Melodic Minor",
+            "Ionian",
+            "Dorian",
+            "Phrygian",
+            "Lydian",
+            "Mixolydian",
+            "Aeolian",
+            "Locrian",
+            "Minor Pentatonic",
+            "Major Pentatonic",
+            "Minor Blues",
+            "Major Blues"
+          ]
+        },
+        "rootPolicy": {
+          "type": "string",
+          "enum": ["fixed", "relative", "byKey"]
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "pattern": {
+      "type": "object",
+      "required": ["family"],
+      "properties": {
+        "family": {
+          "type": "string",
+          "enum": [
+            "notesPerString",
+            "positionBox",
+            "linear",
+            "intervallic",
+            "directional",
+            "chromaticHybrid"
+          ]
+        },
+
+        "notesPerString": {
+          "type": "object",
+          "properties": {
+            "min": { "type": "integer", "minimum": 1, "maximum": 4 },
+            "max": { "type": "integer", "minimum": 1, "maximum": 4 }
+          }
+        },
+
+        "positionBox": {
+          "type": "object",
+          "properties": {
+            "system": { "type": "string", "enum": ["CAGED", "BOX"] },
+            "positions": {
+              "type": "array",
+              "items": { "type": "integer", "minimum": 1, "maximum": 5 }
+            },
+            "rotate": { "type": "boolean" }
+          }
+        },
+
+        "intervallic": {
+          "type": "object",
+          "properties": {
+            "interval": { "type": "string" },
+            "direction": { "type": "string", "enum": ["up", "down", "both"] }
+          }
+        },
+
+        "directional": {
+          "type": "object",
+          "properties": {
+            "style": {
+              "type": "string",
+              "enum": ["straight", "upDown", "zigZag", "pendulum", "custom"]
+            }
+          }
+        },
+
+        "chromaticHybrid": {
+          "type": "object",
+          "properties": {
+            "allowPassingTones": { "type": "boolean" },
+            "explicitPitchClasses": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "constraints": {
+      "type": "object",
+      "required": ["strings", "span"],
+      "properties": {
+        "strings": {
+          "type": "object",
+          "properties": {
+            "allowed": {
+              "type": "array",
+              "items": { "type": "integer", "minimum": 1, "maximum": 6 }
+            },
+            "min": { "type": "integer", "minimum": 1, "maximum": 6 },
+            "max": { "type": "integer", "minimum": 1, "maximum": 6 }
+          }
+        },
+        "span": {
+          "type": "object",
+          "properties": {
+            "min": { "type": "integer", "minimum": 0 },
+            "max": { "type": "integer", "minimum": 0 }
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "tonal": {
+      "type": "object",
+      "required": ["diatonicEnforced"],
+      "properties": {
+        "diatonicEnforced": { "type": "boolean" },
+        "tonalAssist": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean" }
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "glg.tonalAssist.output.schema.v1.1",
+  "title": "GLG Tonal Assist Output",
+  "type": "object",
+  "required": ["tonalAssistResult"],
+  "properties": {
+    "tonalAssistResult": {
+      "type": "object",
+      "required": ["context", "suggestions", "generatedAt"],
+      "properties": {
+        "generatedAt": { "type": "string" },
+
+        "context": {
+          "type": "object",
+          "required": ["source", "analyzeTargetId"],
+          "properties": {
+            "source": {
+              "type": "string",
+              "enum": ["gameplay", "advancedMenu"]
+            },
+            "analyzeTargetType": {
+              "type": "string",
+              "enum": ["liveGameplay", "chordBank", "scaleBuilder", "progression", "progressionStep"]
+            },
+            "analyzeTargetId": { "type": "string" },
+            "stepIndex": { "type": "integer", "minimum": 1 }
+          },
+          "additionalProperties": false
+        },
+
+        "suggestions": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "type": "object",
+            "required": ["id", "candidate", "confidence", "score", "why", "actions"],
+            "properties": {
+              "id": { "type": "string" },
+
+              "candidate": {
+                "type": "object",
+                "required": ["type", "name", "root"],
+                "properties": {
+                  "type": { "type": "string", "enum": ["key", "mode", "scale"] },
+                  "name": {
+                    "type": "string",
+                    "enum": [
+                      "Major",
+                      "Natural Minor",
+                      "Harmonic Minor",
+                      "Melodic Minor",
+                      "Ionian",
+                      "Dorian",
+                      "Phrygian",
+                      "Lydian",
+                      "Mixolydian",
+                      "Aeolian",
+                      "Locrian",
+                      "Minor Blues",
+                      "Major Blues"
+                    ]
+                  },
+                  "root": { "type": "string" }
+                },
+                "additionalProperties": false
+              },
+
+              "confidence": { "type": "string", "enum": ["high", "medium", "low"] },
+
+              "score": {
+                "type": "object",
+                "required": ["matchRatio", "conflictingToneCount"],
+                "properties": {
+                  "matchRatio": { "type": "number", "minimum": 0, "maximum": 1 },
+                  "conflictingToneCount": { "type": "integer", "minimum": 0, "maximum": 12 }
+                },
+                "additionalProperties": false
+              },
+
+              "why": {
+                "type": "object",
+                "required": ["includedTones", "conflictingTones"],
+                "properties": {
+                  "includedTones": { "type": "array", "items": { "type": "string" } },
+                  "conflictingTones": { "type": "array", "items": { "type": "string" } },
+
+                  "parentScale": {
+                    "type": "object",
+                    "required": ["name", "root"],
+                    "properties": {
+                      "name": { "type": "string" },
+                      "root": { "type": "string" }
+                    },
+                    "additionalProperties": false
+                  },
+
+                  "characteristicTones": { "type": "array", "items": { "type": "string" } },
+
+                  "degreeFitSummary": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": ["degree", "qualityHint"],
+                      "properties": {
+                        "degree": { "type": "string" },
+                        "qualityHint": { "type": "string" }
+                      },
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "additionalProperties": false
+              },
+
+              "actions": {
+                "type": "object",
+                "required": ["add", "replace"],
+                "properties": {
+                  "add": {
+                    "type": "object",
+                    "required": ["enabled", "targets"],
+                    "properties": {
+                      "enabled": { "type": "boolean", "default": true },
+                      "targets": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                          "type": "string",
+                          "enum": [
+                            "progression.tonalContext.library",
+                            "pitchSetLibrary.scaleMode",
+                            "chordBank.metadata",
+                            "progression.metadata"
+                          ]
+                        }
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "replace": {
+                    "type": "object",
+                    "required": ["enabled", "targets", "requireConfirm"],
+                    "properties": {
+                      "enabled": { "type": "boolean", "default": true },
+                      "requireConfirm": { "type": "boolean", "default": true },
+                      "targets": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                          "type": "string",
+                          "enum": [
+                            "progression.tonalContext.active",
+                            "progression.steps[].overrides.tonalContext",
+                            "pitchSet.active.scaleMode"
+                          ]
+                        }
+                      },
+                      "changeSummary": { "type": "string" }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
