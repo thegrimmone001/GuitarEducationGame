@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "glg.pitchSet.scaleMode.schema.v1.2",
+  "title": "GLG Pitch Set — Scale Mode (v1.2)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "enabled", "kind", "definition"],
+  "properties": {
+    "id": { "type": "string" },
+    "enabled": { "type": "boolean" },
+    "kind": { "type": "string", "const": "scaleMode" },
+    "label": { "type": "string" },
+    "definition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root","mode"],
+      "properties": {
+        "root": { "$ref": "#/$defs/noteName" },
+        "mode": { "enum": ["Ionian","Dorian","Phrygian","Lydian","Mixolydian","Aeolian","Locrian"] },
+        "notes": { "type": "array", "items": { "$ref": "#/$defs/noteName" }, "minItems": 7 }
+      }
+    }
+  },
+  "$defs": {
+    "noteName": { "enum": ["C","C#","Db","D","D#","Eb","E","F","F#","Gb","G","G#","Ab","A","A#","Bb","B"] }
+  }
+}

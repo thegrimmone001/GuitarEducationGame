@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "glg.tonalAssist.settings.schema.v1.2",
+  "title": "GLG Tonal Assist Settings (v1.2)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["enabled", "scope"],
+  "properties": {
+    "enabled": { "type": "boolean" },
+    "scope": { "enum": ["currentEditedObject", "global", "matchOnly"] },
+    "hintLevel": { "enum": ["off", "low", "medium", "high"] },
+    "showRoot": { "type": "boolean" },
+    "showQuality": { "type": "boolean" },
+    "showInterval": { "type": "boolean" },
+    "autoSuggest": { "type": "boolean" }
+  }
+}

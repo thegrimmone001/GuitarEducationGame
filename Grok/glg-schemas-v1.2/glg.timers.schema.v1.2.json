@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "glg.timers.schema.v1.2",
+  "title": "GLG Timers (v1.2)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["match", "round", "bonus"],
+  "properties": {
+    "match": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "duration": { "type": "integer", "minimum": 0, "maximum": 86400 },
+        "enabled": { "type": "boolean" }
+      }
+    },
+    "round": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "duration": { "type": "integer", "minimum": 0, "maximum": 3600 },
+        "enabled": { "type": "boolean" }
+      }
+    },
+    "bonus": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "duration": { "type": "integer", "minimum": 0, "maximum": 300 },
+        "enabled": { "type": "boolean" }
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "glg.matchConfig.schema.v1.2",
+  "title": "GLG Full Match Configuration (v1.2)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["matchOptions","key","tuning"],
+  "properties": {
+    "matchOptions": { "$ref": "glg.matchOptions.schema.v1.2" },
+    "key": { "$ref": "glg.pitchSet.chord.schema.v1.2#/$defs/noteName" },
+    "accidentalsPool": { "type": "array", "items": { "enum": ["natural","sharp","flat"] } },
+    "tuning": { "enum": ["standard","dropD","openG","openE","DADGAD"] },
+    "inputMethod": { "enum": ["fretboardTap","noteName","romanNumeral","earTraining"] },
+    "romanNumerals": { "type": "boolean" },
+    "bonusPhase": { "type": "boolean" },
+    "fretboardConstraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "minFret": { "type": "integer" },
+        "maxFret": { "type": "integer" },
+        "strings": { "type": "integer" }
+      }
+    },
+    "pitchSets": {
+      "type": "object",
+      "properties": {
+        "chords": { "type": "array", "items": { "$ref": "glg.pitchSet.chord.schema.v1.2" } },
+        "scales": { "type": "array", "items": { "$ref": "glg.pitchSet.scaleMode.schema.v1.2" } },
+        "arpeggios": { "type": "array", "items": { "$ref": "glg.pitchSet.arpeggio.schema.v1.2" } },
+        "intervals": { "type": "array", "items": { "$ref": "glg.pitchSet.interval.schema.v1.2" } }
+      }
+    }
+  }
+}
