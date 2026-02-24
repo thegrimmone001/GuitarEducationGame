@@ -1,13 +1,12 @@
-# Node.js dependencies
+# Generated
 node_modules/
-
-# Logs
-*.log
-
-# Build Files
 dist/
-build/
+tsconfig.tsbuildinfo
 
-# OS-specific files
+# Temp/Logs
+*.log
+*.tmp
+
+# OS junk
 .DS_Store
 Thumbs.db
