@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "glg.pitchSet.interval.schema.v1.1",
+  "title": "GLG Pitch Set — Intervals",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "enabled", "kind"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "enabled": { "type": "boolean" },
+    "kind": { "type": "string", "const": "interval" },
+    "label": { "type": "string" },
+    "definition": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Phase B-2 shell: UI may store builder state or library ref. Engine semantics out of scope."
+    }
+  }
+}

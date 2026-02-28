@@ -1,0 +1,2 @@
+Embedded GLG_CANON_UPDATE_012626.zip into this build archive (guitar-edu-ui_01_25_26_161).
+Do not remove; this is the current canon update bundle.
