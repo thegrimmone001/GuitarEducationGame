@@ -1,0 +1,1365 @@
+{
+  "version": "v9",
+  "defs": {
+    "defaultCardinality": {
+      "answerSet": "single",
+      "answerCount": 1
+    },
+    "defaultOctaveRange": {
+      "min": 1,
+      "max": 5
+    }
+  },
+  "presets": {
+    "A": {
+      "id": "A",
+      "surfaceControls": {
+        "surfaces": {
+          "fretboard": {
+            "prompt": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "persistence": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          },
+          "staff": {
+            "prompt": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "persistence": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          },
+          "tab": {
+            "prompt": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "persistence": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          },
+          "noteRail": {
+            "prompt": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "persistence": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "B": {
+      "id": "B",
+      "surfaceControls": {
+        "surfaces": {
+          "fretboard": {
+            "prompt": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "persistence": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          },
+          "staff": {
+            "prompt": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "persistence": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          },
+          "tab": {
+            "prompt": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "persistence": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          },
+          "noteRail": {
+            "prompt": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "persistence": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "C": {
+      "id": "C",
+      "surfaceControls": {
+        "surfaces": {
+          "fretboard": {
+            "prompt": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "persistence": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          },
+          "staff": {
+            "prompt": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "persistence": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          },
+          "tab": {
+            "prompt": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "persistence": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          },
+          "noteRail": {
+            "prompt": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "persistence": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "D": {
+      "id": "D",
+      "surfaceControls": {
+        "surfaces": {
+          "fretboard": {
+            "prompt": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "all"
+            },
+            "persistence": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          },
+          "staff": {
+            "prompt": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "all"
+            },
+            "persistence": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          },
+          "tab": {
+            "prompt": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "persistence": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          },
+          "noteRail": {
+            "prompt": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "persistence": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "E": {
+      "id": "E",
+      "surfaceControls": {
+        "surfaces": {
+          "fretboard": {
+            "prompt": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "all"
+            },
+            "persistence": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          },
+          "staff": {
+            "prompt": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "persistence": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          },
+          "tab": {
+            "prompt": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "all"
+            },
+            "persistence": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          },
+          "noteRail": {
+            "prompt": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "persistence": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "F": {
+      "id": "F",
+      "surfaceControls": {
+        "surfaces": {
+          "fretboard": {
+            "prompt": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "persistence": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          },
+          "staff": {
+            "prompt": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "all"
+            },
+            "persistence": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          },
+          "tab": {
+            "prompt": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "all"
+            },
+            "persistence": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          },
+          "noteRail": {
+            "prompt": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "persistence": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "G": {
+      "id": "G",
+      "surfaceControls": {
+        "surfaces": {
+          "fretboard": {
+            "prompt": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "all"
+            },
+            "persistence": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          },
+          "staff": {
+            "prompt": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "all"
+            },
+            "persistence": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          },
+          "tab": {
+            "prompt": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "all"
+            },
+            "persistence": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          },
+          "noteRail": {
+            "prompt": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "persistence": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "H": {
+      "id": "H",
+      "surfaceControls": {
+        "surfaces": {
+          "fretboard": {
+            "prompt": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "persistence": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          },
+          "staff": {
+            "prompt": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "persistence": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          },
+          "tab": {
+            "prompt": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "persistence": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          },
+          "noteRail": {
+            "prompt": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "persistence": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "I": {
+      "id": "I",
+      "surfaceControls": {
+        "surfaces": {
+          "fretboard": {
+            "prompt": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "persistence": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          },
+          "staff": {
+            "prompt": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "persistence": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          },
+          "tab": {
+            "prompt": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "persistence": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          },
+          "noteRail": {
+            "prompt": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "persistence": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "J": {
+      "id": "J",
+      "surfaceControls": {
+        "surfaces": {
+          "fretboard": {
+            "prompt": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "persistence": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          },
+          "staff": {
+            "prompt": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "persistence": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          },
+          "tab": {
+            "prompt": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "persistence": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          },
+          "noteRail": {
+            "prompt": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "mark": {
+              "enabled": true,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              },
+              "surfaceScope": "single"
+            },
+            "persistence": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            },
+            "sam": {
+              "enabled": false,
+              "cardinality": {
+                "answerSet": "single",
+                "answerCount": 1
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,1866 @@
+/* Utility */
+.hidden{display:none !important;}
+
+/* Launch (Central Menu → Column Menus) */
+.ge-launch{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.65);z-index:50;}
+.ge-launchCols{display:flex;gap:16px;align-items:flex-start;justify-content:flex-start;max-width:calc(100vw - 64px);width:100%;}
+.ge-launchShell{display:flex;flex-direction:column;gap:14px;max-width:calc(100vw - 64px);width:100%;}
+.ge-launchTop{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;padding:0 8px;}
+.ge-launchBrandTitle{font-size:32px;font-weight:800;letter-spacing:0.4px;}
+.ge-launchBrandSub{font-size:12px;opacity:0.75;margin-top:4px;}
+.ge-launchAccount{display:flex;flex-direction:column;align-items:flex-end;gap:8px;}
+.ge-launchAccountTitle{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;opacity:0.72;}
+.ge-launchAccountBtns{display:flex;gap:8px;}
+.ge-launchMiniBtn{padding:8px 10px;border-radius:10px;border:1px solid rgba(255,255,255,0.10);background:rgba(255,255,255,0.04);color:inherit;cursor:pointer;font-weight:700;}
+.ge-launchMiniBtn:hover{background:rgba(255,255,255,0.08);}
+.ge-launchAccountNote{font-size:11px;opacity:0.65;max-width:240px;text-align:right;line-height:1.25;}
+
+.ge-testPanel{display:flex;flex-direction:column;gap:12px;}
+.ge-testBox{border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03);border-radius:12px;padding:12px;}
+.ge-testTitle{font-weight:800;letter-spacing:0.3px;margin-bottom:8px;}
+.ge-testLine{display:flex;gap:8px;margin:4px 0;}
+.ge-testK{opacity:0.75;min-width:78px;}
+.ge-testV{opacity:0.95;}
+.ge-testHint{opacity:0.7;font-size:11px;line-height:1.25;margin-top:8px;}
+.ge-testPre{white-space:pre-wrap;word-break:break-word;max-height:320px;overflow:auto;border:1px solid rgba(255,255,255,0.08);background:rgba(0,0,0,0.25);border-radius:10px;padding:10px;margin:8px 0 10px;font-size:12px;line-height:1.25;}
+.ge-testActions{display:flex;gap:8px;justify-content:flex-end;}
+
+.ge-prefNote{opacity:0.7;font-size:11px;line-height:1.25;margin:6px 0 10px;}
+/* Columns must remain usable as options grow: keep them scrollable within the overlay. */
+.ge-menuCol{
+  width:220px;
+  max-width:220px;
+  max-height:calc(100vh - 120px);
+  overflow:auto;
+  background:rgba(20,20,24,0.95);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.35);
+  padding:8px;
+}
+
+/* Canon: Advanced Match Settings wing must not scroll. */
+.ge-matchOptionsCol{
+  width:560px;
+  max-width:560px;
+  overflow:hidden;
+}
+
+/* Start Menu: Initialization Panels (canon) */
+.ge-initCol{width:580px;max-width:580px;overflow:hidden;}
+.ge-initHost{display:flex;flex-direction:column;gap:8px;min-height:0;}
+.ge-initGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.ge-initCard{border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03);border-radius:12px;padding:8px;}
+.ge-initCardTitle{font-weight:800;letter-spacing:0.3px;margin-bottom:4px;font-size:13px;}
+.ge-initBody{display:flex;flex-direction:column;gap:6px;}
+.ge-initField{display:flex;flex-direction:column;gap:3px;}
+.ge-initLabel{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;opacity:0.75;}
+.ge-initInline{display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap;}
+.ge-initMini{display:flex;flex-direction:column;gap:4px;}
+.ge-initPills{display:flex;gap:6px;flex-wrap:wrap;}
+.ge-initLine{display:flex;gap:6px;align-items:baseline;}
+.ge-initK{opacity:0.75;min-width:72px;}
+.ge-initV{opacity:0.95;font-weight:700;}
+.ge-initHint{opacity:0.7;font-size:11px;line-height:1.25;}
+.ge-initActions{display:flex;gap:8px;justify-content:flex-end;}
+
+/* (Legacy) tab styles left in place; Wing Fly-Out uses left-nav buttons instead. */
+.ge-advTabs{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 10px;}
+.ge-advTab{padding:8px 10px;border-radius:10px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);color:inherit;cursor:pointer;font-weight:600;font-size:12px;}
+.ge-advTab[aria-selected="true"]{background:rgba(255,255,255,0.10);}
+.ge-advPanelHost{display:block;}
+.ge-advPanel{display:block;}
+
+/* Advanced Match Settings flyout (canon: separate wing overlay, no scrolling) */
+.ge-advOpenBtn{
+  width:100%;
+  margin-top:8px;
+  padding:8px 8px;
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,0.08);
+  background:rgba(255,255,255,0.04);
+  color:inherit;
+  cursor:pointer;
+  font-weight:700;
+  font-size:12px;
+  letter-spacing:0.4px;
+  text-align:left;
+}
+.ge-advOpenBtn:hover{background:rgba(255,255,255,0.08);}
+
+/* Wing Fly-Out System (canon) */
+.ge-advBackdrop{
+  position:fixed;
+  inset:0;
+  background:transparent; /* canon: no dimming */
+  z-index:90;
+}
+.ge-advWing{
+  position:fixed;
+  top:72px;
+  right:24px;
+  width:min(980px, calc(100vw - 340px));
+  height:calc(100vh - 120px);
+  overflow:hidden;
+  background:rgba(20,20,24,0.97);
+  border:1px solid rgba(255,255,255,0.10);
+  border-radius:14px;
+  box-shadow:0 18px 55px rgba(0,0,0,0.55);
+  z-index:91;
+  display:flex;
+  flex-direction:column;
+}
+.ge-advFlyoutHeader{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:12px 14px;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.ge-advFlyoutTitle{font-weight:800;letter-spacing:0.3px;}
+.ge-advCloseBtn{
+  padding:8px 10px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.10);
+  background:rgba(255,255,255,0.04);
+  color:inherit;
+  cursor:pointer;
+  font-weight:700;
+}
+.ge-advCloseBtn:hover{background:rgba(255,255,255,0.08);}
+.ge-advWingBody{
+  padding:10px 12px;
+  overflow:hidden; /* canon: no scrolling */
+  display:grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap:12px;
+  min-height:0;
+  flex:1;
+}
+.ge-advNav{
+  border:1px solid rgba(255,255,255,0.08);
+  background:rgba(255,255,255,0.03);
+  border-radius:12px;
+  padding:10px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  overflow:hidden;
+}
+.ge-advNavBtn{
+  width:100%;
+  text-align:left;
+  padding:10px 10px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.10);
+  background:rgba(255,255,255,0.04);
+  color:inherit;
+  cursor:pointer;
+  font-weight:700;
+  font-size:12px;
+}
+.ge-advNavBtn:hover{background:rgba(255,255,255,0.08);}
+.ge-advNavBtn.isActive{background:rgba(255,255,255,0.10);}
+.ge-advContent{
+  overflow:hidden;
+  min-width:0;
+}
+.ge-menuTitle{font-weight:700;letter-spacing:0.5px;margin-bottom:8px;opacity:0.95;font-size:16px;}
+.ge-menuList{display:flex;flex-direction:column;gap:6px;}
+.ge-menuItem{width:100%;text-align:left;padding:10px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.04);color:inherit;cursor:pointer;font-size:14px;}
+.ge-menuItem:hover{background:rgba(255,255,255,0.08);}
+.ge-menuItem:active{transform:translateY(1px);}
+
+/* Match Options sizing is defined above (canon: no scrolling). */
+.ge-moSection{margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.08);}
+.ge-moSection:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+.ge-moSectionTitle{font-weight:700;font-size:12px;letter-spacing:0.4px;opacity:0.88;margin-bottom:6px;}
+.ge-moRow{display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end;}
+/* Layout stability: allow fields to shrink so row wrapping is deterministic. */
+.ge-moField{display:flex;flex-direction:column;gap:6px;min-width:0;flex:1;}
+.ge-moLabel{font-size:11px;opacity:0.78;}
+.ge-moSelect,.ge-moNumber{width:100%;padding:6px 6px;border-radius:6px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.04);color:inherit;font-size:12px;}
+.ge-moSelect:disabled{opacity:0.55;}
+.ge-moPillRow{display:flex;gap:4px;flex-wrap:wrap;}
+/* Strings should remain on a single row (6..1) to avoid unnecessary height. */
+.ge-moPillRow--strings{
+  display:grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap:6px;
+}
+.ge-moPill{
+  min-width:44px;
+  padding:10px 0;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.08);
+  background:rgba(255,255,255,0.04);
+  color:inherit;
+  cursor:pointer;
+  font-weight:700;
+}
+.ge-moPill:hover{background:rgba(255,255,255,0.08);}
+.ge-moPill.is-active{outline:2px solid rgba(0,183,255,0.65);background:rgba(0,183,255,0.12);}
+.ge-moPresetGrid{display:grid;grid-template-columns:repeat(5, 1fr);gap:8px;}
+.ge-moPresetBtn{padding:8px 0;border-radius:8px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.04);color:inherit;cursor:pointer;font-weight:700;}
+.ge-moPresetBtn:hover{background:rgba(255,255,255,0.08);}
+.ge-moPresetBtn.is-active{outline:2px solid rgba(0,183,255,0.65);background:rgba(0,183,255,0.12);}
+
+/* Surface Controls matrix (Active / Prompt / Mark / Display / SAM + Cardinality) */
+.ge-moHint{font-size:11px;opacity:0.76;line-height:1.25;margin:2px 0 10px;}
+.ge-moMatrix{display:flex;flex-direction:column;gap:6px;}
+.ge-moMatrixRow{display:grid;grid-template-columns: 1.35fr repeat(4, 1fr);gap:6px;align-items:center;}
+.ge-moMatrixHeader{opacity:0.78;font-size:11px;}
+.ge-moMatrixCell{border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03);border-radius:10px;padding:8px 8px;display:flex;align-items:center;justify-content:center;min-height:38px;}
+.ge-moMatrixCell--surface{justify-content:flex-start;font-weight:700;letter-spacing:0.2px;}
+.ge-moMatrixCell--h{font-weight:700;}
+.ge-moMatrixCell--check input{width:16px;height:16px;}
+.ge-moCardSelect{width:100%;padding:8px 10px;border-radius:10px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.04);color:inherit;}
+.ge-moSr{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;}
+.ge-moActions{
+  display:flex;
+  gap:10px;
+  margin-top:12px;
+  position:sticky;
+  bottom:0;
+  padding-top:10px;
+  background:linear-gradient(180deg, rgba(20,20,24,0), rgba(20,20,24,0.92) 28%, rgba(20,20,24,0.98));
+}
+.ge-moStart,.ge-moBack{flex:1;padding:10px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.10);background:rgba(255,255,255,0.06);color:inherit;cursor:pointer;font-weight:700;}
+.ge-moStart:hover,.ge-moBack:hover{background:rgba(255,255,255,0.10);}
+
+/* Advanced Match Settings (collapsed) */
+.ge-moAdvanced{margin-top:8px;}
+.ge-moAdvancedSummary{list-style:none;cursor:pointer;font-weight:700;font-size:12px;letter-spacing:0.4px;opacity:0.92;padding:8px 8px;border-radius:8px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.04);}
+.ge-moAdvanced[open] .ge-moAdvancedSummary{background:rgba(255,255,255,0.08);outline:2px solid rgba(0,183,255,0.45);}
+.ge-moAdvancedSummary::-webkit-details-marker{display:none;}
+.ge-moAdvancedBody{padding-top:8px;}
+.ge-moConstraintTitle{font-weight:700;font-size:12px;opacity:0.90;margin-bottom:4px;}
+.ge-moConstraintPane{padding:8px 10px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);}
+.ge-moConstraints{display:flex;flex-direction:column;gap:8px;}
+
+/* --- Education (Teach) pane --- */
+.teachPane{ display:flex; flex-direction:column; gap:10px; padding:10px; }
+.teachTitle{ font-weight:700; letter-spacing:.02em; }
+.teachHint{ font-size:12px; color: rgba(215,230,255,.82); line-height:1.25; }
+.teachBody{ display:flex; flex-direction:column; gap:10px; }
+.teachRow{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.teachRadio, .teachCheck{ display:flex; align-items:center; gap:6px; font-size:12px; color: rgba(235,245,255,.92); user-select:none; }
+.teachSelected{ display:flex; align-items:center; gap:8px; padding:6px 8px; border-radius:10px; background: rgba(10,16,22,.45); border:1px solid rgba(255,255,255,.10); }
+.teachSelected .k{ font-size:12px; color: rgba(215,230,255,.78); }
+.teachSelected .v{ font-weight:700; }
+.teachSubTitle{ margin-top:2px; font-size:12px; font-weight:700; color: rgba(215,230,255,.82); }
+
+/* -------- Base -------- */
+:root{
+  --bg0:#0b0f14;
+  --bg1:#111824;
+  --text:#d7e6ff;
+  --muted:#93a8c7;
+
+  --accent:#00b7ff;
+  --good:#44d67c;
+  --bad:#ff4f64;
+  --warn:#ffcc3a;
+
+  --radius:10px;
+  --shadow: 0 10px 30px rgba(0,0,0,.45);
+  /* Responsive heights so the layout can fit on shorter viewports */
+  /* Slightly shorter header to free vertical space for the play areas */
+  --headerH: clamp(76px, 9.5vh, 92px);
+  --footerH: clamp(62px, 8.5vh, 78px);
+  --leftW: 260px;
+  --rightW: 280px;
+  /* Reduce outer whitespace so more content fits without feeling "pushed" */
+  --gap: 8px;
+  --pad: 6px;
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  color:var(--text);
+  background:
+    radial-gradient(1200px 400px at 40% -10%, rgba(0,183,255,.22), transparent 55%),
+    radial-gradient(900px 350px at 95% 0%, rgba(77,215,255,.18), transparent 60%),
+    linear-gradient(180deg, var(--bg1), var(--bg0) 55%);
+  overflow:hidden;
+}
+
+#app{
+  height:100%;
+  width:100%;
+  display:flex;
+  align-items:stretch;
+  justify-content:stretch;
+  padding:0;
+}
+.ge-shell{
+  width:100%;
+  height:100%;
+
+  display:grid;
+  /* 3-column layout only (no header row) to maximize the center play area */
+  grid-template-rows: 1fr var(--footerH);
+  gap:var(--gap);
+  padding:var(--pad);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+  box-shadow: var(--shadow);
+}
+
+.ge-panel{
+  border:1px solid rgba(255,255,255,.08);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(800px 240px at 50% 0%, rgba(255,255,255,.06), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+}
+
+/* -------- Header -------- */
+.ge-header{
+  display:grid;
+  /* Allow the middle column to shrink without pushing the right column off-screen */
+  grid-template-columns: clamp(220px, 18vw, 260px) minmax(0, 1fr) clamp(260px, 22vw, 300px);
+  gap:var(--gap);
+}
+
+.ge-logo{
+  padding:10px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.ge-logo .note{
+  width:40px;height:40px;border-radius:12px;
+  background:
+    radial-gradient(18px 18px at 30% 30%, rgba(255,255,255,.35), transparent 60%),
+    radial-gradient(26px 26px at 70% 70%, rgba(0,183,255,.25), transparent 65%),
+    linear-gradient(180deg, rgba(0,183,255,.35), rgba(0,0,0,.08));
+  border:1px solid rgba(0,183,255,.35);
+}
+.ge-logo .brand{
+  font-weight:900;
+  font-size:26px;
+}
+.ge-logo .brand .edu{
+  background: linear-gradient(180deg, #ffe25d, #ffb300);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.ge-leaderbar{
+  padding:10px;
+  display:grid;
+  /* Auto-fit so removing chips doesn't leave "phantom" empty columns */
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap:8px;
+  align-items:center;
+  overflow:hidden;
+}
+.leader-chip{
+  flex: 1 1 0;
+  min-width: 0;
+  height: 68px;
+  border-radius: 14px;
+  border:1px solid rgba(255,255,255,.10);
+  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+  display:flex;
+  align-items:center;
+  padding:8px;
+  gap:10px;
+  overflow:hidden;
+}
+.leader-chip .avatar{
+  width:46px;height:46px;border-radius:50%;
+  border:2px solid rgba(77,215,255,.65);
+  background: radial-gradient(circle at 35% 35%, rgba(255,255,255,.25), rgba(0,183,255,.15));
+}
+.leader-chip .score{ font-weight:900; font-size:22px; }
+.leader-chip .name{ font-size:13px; color:var(--muted); margin-top:2px; }
+
+/* Simple list rows (used for High Scores) */
+.leader-row{
+  padding:8px 10px;
+  border-radius: 12px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.03);
+  display:grid;
+  grid-template-columns: 1fr auto;
+  gap:8px;
+}
+.leader-row .leader-name{ font-size:13px; color: var(--text); }
+.leader-row .leader-score{ font-weight:900; }
+.leader-row .leader-meta{
+  grid-column:1 / -1;
+  margin-top:-2px;
+  font-size:11px;
+  color: var(--muted);
+}
+
+.ge-playercard{
+  padding:8px;
+  display:grid;
+  grid-template-columns: 68px 1fr;
+  gap:10px 12px;
+  align-items:center;
+}
+.ge-playercard .avatar{
+  grid-row: 1 / span 3;
+  width:68px;height:68px;border-radius:50%;
+  border:2px solid rgba(77,215,255,.75);
+  background: radial-gradient(circle at 35% 35%, rgba(255,255,255,.25), rgba(0,183,255,.15));
+}
+.player-scoreRow{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:10px;
+}
+.player-scoreRow .score{ font-weight:950; font-size:28px; }
+.player-scoreRow .mult{ color:#ffb300; font-weight:900; font-size:22px; }
+
+.player-target{
+  grid-column: 2;
+  margin-top:-6px;
+  font-size:12px;
+  color: rgba(215,230,255,.86);
+  font-weight:800;
+  letter-spacing:.02em;
+  text-align:right;
+}
+.player-target .spell{
+  font-weight:900;
+  opacity:.9;
+}
+.player-target.is-sharp .spell{
+  color: rgba(255,185,0,.95);
+}
+.player-target.is-flat .spell{
+  color: rgba(255,185,0,.95);
+}
+.player-bottom{
+  display:flex;
+  justify-content:space-between;
+  color:var(--muted);
+  font-size:13px;
+}
+
+/* Tokens / bonus counters (10-dot bank by default) */
+.tokenRow{
+  grid-column: 2;
+  display:flex;
+  justify-content:flex-end;
+  gap:4px;
+  padding:2px 0 0;
+}
+.tokenDot{
+  width:8px;
+  height:8px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.06);
+}
+.tokenDot.filled{
+  background: rgba(255,255,255,.88);
+  border-color: rgba(255,255,255,.55);
+}
+
+/* Leaderboard list */
+.leader-list{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.leader-list .leader-chip{
+  height:58px;
+  border-radius:12px;
+  padding:6px 8px;
+}
+.leader-list .leader-chip .avatar{ width:38px; height:38px; }
+.leader-list .leader-chip .score{ font-size:18px; }
+.leader-list .leader-chip .name{ font-size:12px; }
+.leader-tokens{
+  margin-left:auto;
+  display:flex;
+  gap:3px;
+}
+.leader-tokens .tokenDot{ width:7px; height:7px; }
+.badge{
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.18);
+}
+
+/* -------- Main -------- */
+.ge-main{
+  display:grid;
+  /* Clamp side columns so the center can shrink on narrower windows */
+  grid-template-columns:
+    clamp(220px, 18vw, var(--leftW))
+    minmax(0, 1fr)
+    clamp(240px, 20vw, var(--rightW));
+  gap:var(--gap);
+  min-height:0;
+}
+
+.ge-left,.ge-center,.ge-right{
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+  gap:var(--gap);
+}
+.ge-left,.ge-right,.ge-center{ padding:10px; }
+
+.section{
+  padding:10px;
+  border-radius: var(--radius);
+  border:1px solid rgba(255,255,255,.08);
+  background: rgba(0,0,0,.18);
+}
+
+/* Column sections can flex their children (used for the center fretboard area) */
+.section.col{
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+}
+.section.col .fretStage{
+  /* Option A (layout balance): do NOT stretch the fretboard to fill leftover space.
+     Keep a predictable height so Staff+TAB and the fretboard feel centered/balanced. */
+  flex:none;
+  height: clamp(240px, 34vh, 320px);
+  /* Center the fretboard stage within the center column on wide viewports */
+  max-width: 1220px;
+  margin: 0 auto;
+}
+
+
+.block-title{
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color: rgba(215,230,255,.75);
+  margin:2px 0 8px;
+}
+
+.btn{
+  width:100%;
+  display:flex;
+  gap:10px;
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.10);
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.12));
+  color:var(--text);
+  cursor:pointer;
+}
+.btn:hover{ border-color: rgba(77,215,255,.35); }
+.dot{ width:10px;height:10px;border-radius:50%; }
+.dot.green{ background: var(--good); }
+.dot.red{ background: var(--bad); }
+.dot.yellow{ background: var(--warn); }
+.dot.blue{ background: var(--accent); }
+
+/* Tabs */
+.tabs{
+  display:flex;
+  gap:6px;
+  padding:6px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.18);
+}
+.tab{
+  flex:1;
+  min-width:0;
+  border-radius:10px;
+  padding:8px 10px;
+  font-size:12px;
+  color:rgba(240,247,255,.88);
+  cursor:pointer;
+  text-align:center;
+  border:1px solid transparent;
+}
+
+.devHidden{ display:none !important; }
+
+/* Compact tabs (used in the Utility panel so all labels fit) */
+.tabs.compact{
+  gap:4px;
+  padding:4px;
+}
+.tabs.compact .tab{
+  padding:6px 6px;
+  font-size:11px;
+  border-radius:9px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.tab.active{
+  color:var(--text);
+  border-color: rgba(77,215,255,.35);
+  background: rgba(0,183,255,.12);
+}
+.tabpanes{ margin-top:10px; }
+.pane{ display:none; }
+.pane.active{ display:block; }
+
+/* Center: staff + note strip + fretboard */
+.svgStage{
+  position:relative;
+  width:100%;
+  height: clamp(150px, 24vh, 210px);
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.10);
+  background:#fff;
+  overflow:hidden;
+}
+
+.svgImg{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:contain;
+}
+
+/* SVG background + overlay pairing (keeps hitboxes locked to geometry) */
+.svgHost,
+.svgOverlay{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+}
+
+/* Canvas primary rendering layer (SVG may be unavailable; visuals must not depend on SVG assets). */
+.canvasLayer{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
+  pointer-events:none;
+}
+
+.svgHost svg{
+  width:100%;
+  height:100%;
+  display:block;
+  pointer-events:none;
+}
+
+.svgOverlay{
+  display:block;
+  pointer-events:auto;
+  background:transparent;
+}
+
+/* Staff/Tab panel disabled state (e.g., Mode 1) */
+.staffSection.isDisabled .svgStage{
+  filter: grayscale(0.25) brightness(0.9);
+}
+.staffSection.isDisabled .svgOverlay{
+  pointer-events:none;
+}
+.staffSection.isDisabled .svgStage::after{
+  content:"Disabled in this mode";
+  position:absolute;
+  right:10px;
+  bottom:10px;
+  padding:6px 9px;
+  border-radius:10px;
+  background: rgba(0,0,0,.45);
+  color: rgba(255,255,255,.86);
+  font-size: 12px;
+  letter-spacing: .08em;
+  pointer-events:none;
+}
+
+
+.noteStrip{
+  --railGap: 4px;
+  height: clamp(60px, 9vh, 74px);
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.12);
+  background: linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.24));
+  display:flex;
+  align-items:center;
+  gap:0;
+  padding:6px;
+  overflow:hidden;
+  position:relative;
+}
+.noteStrip .rail{
+  display:flex;
+  gap: var(--railGap);
+  align-items:stretch;
+  transition: transform 180ms ease;
+  width:100%;
+}
+.noteTile{
+  flex: 1 1 0;
+  min-width: 0;
+  font-size: clamp(11px, 1.05vw, 15px);
+  height: clamp(44px, 6.6vh, 56px);
+  padding: 0 3px;
+  text-align: center;
+  white-space: nowrap;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.05);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  cursor:pointer;
+  user-select:none;
+}
+.noteTile.disabled{
+  opacity: .35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.noteTile.sam{
+  outline: 2px solid rgba(255, 204, 58, .95);
+  box-shadow: 0 0 0 2px rgba(255, 204, 58, .20);
+}
+.noteTile.active{
+  border-color: rgba(255,255,255,.22);
+  background: rgba(255,255,255,.12);
+  transform: scale(1.08);
+}
+.noteStrip .homeMarker{
+  position:absolute;
+  left:50%; top:50%;
+  transform: translate(-50%,-50%);
+  width: calc((100% - (24 * var(--railGap))) / 25);
+  height: calc(100% - 12px);
+  border-radius:12px;
+  border:2px solid rgba(255,255,255,.22);
+  pointer-events:none;
+}
+
+/* --- Task Context panel --- */
+#taskContext .kv{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+#taskContext .row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:6px 8px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.04);
+}
+#taskContext .k{
+  font-size:12px;
+  letter-spacing:.05em;
+  color: rgba(255,255,255,.70);
+}
+#taskContext .v{
+  font-size:12px;
+  font-weight:800;
+  color: rgba(255,255,255,.92);
+  text-align:right;
+}
+
+.fretStage{
+  width:100%;
+  height: auto;
+  flex: 1;
+  min-height: 160px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.12);
+  background: linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.26));
+  overflow:hidden;
+  position:relative;
+}
+
+.fretStage .svgImg{
+  /* Fit the full fretboard into the stage without scrollbars */
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+/* --- Fretboard interaction layer ---
+   NOTE: This is an approximate hit-map overlay. It is intentionally simple
+   and will be refined as we wire real SVG anchors / board logic.
+*/
+.fretOverlay{
+  /* Roughly crop to the playable grid area inside the SVG */
+  position:absolute;
+  top: 17%;
+  bottom: 18%;
+  left: 6.5%;
+  right: 2.7%;
+  display:grid;
+  grid-template-columns: repeat(var(--fretCols, 8), 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap:0;
+  pointer-events:auto;
+}
+
+.fretCell{
+  appearance:none;
+  -webkit-appearance:none;
+  width:100%;
+  height:100%;
+  padding:0;
+  margin:0;
+  border-radius:8px;
+  border:1px solid transparent;
+  background: transparent;
+  cursor:pointer;
+  position: relative;
+}
+
+/* Ownership dots inside the overlay */
+.fretCell .dotFull,
+.fretCell .dotHalf{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  width:12px;
+  height:12px;
+  border-radius:999px;
+  border:2px solid rgba(255,255,255,.20);
+  background: rgba(255,255,255,.08);
+  box-shadow: 0 0 0 2px rgba(0,0,0,.25);
+  pointer-events:none;
+}
+.fretCell .dotHalf{
+  width:10px;
+  height:10px;
+  border-width:2px;
+}
+.fretCell .dotHalf.left{ transform: translate(-78%, -50%); }
+.fretCell .dotHalf.right{ transform: translate(-22%, -50%); }
+
+/* Player color assignment (high contrast) */
+.fretCell .dotFull[data-owner="0"],
+.fretCell .dotHalf[data-owner="0"],
+.leader-chip[data-owner="0"] .avatar{ border-color: rgba(77,215,255,.85); }
+
+.fretCell .dotFull[data-owner="1"],
+.fretCell .dotHalf[data-owner="1"],
+.leader-chip[data-owner="1"] .avatar{ border-color: rgba(255,112,182,.85); }
+
+.fretCell .dotFull[data-owner="2"],
+.fretCell .dotHalf[data-owner="2"],
+.leader-chip[data-owner="2"] .avatar{ border-color: rgba(255,204,58,.85); }
+
+.fretCell .dotFull[data-owner="3"],
+.fretCell .dotHalf[data-owner="3"],
+.leader-chip[data-owner="3"] .avatar{ border-color: rgba(97,230,128,.85); }
+
+.fretCell .dotFull[data-owner="4"],
+.fretCell .dotHalf[data-owner="4"],
+.leader-chip[data-owner="4"] .avatar{ border-color: rgba(255,147,58,.85); }
+
+.fretCell .dotFull[data-owner],
+.fretCell .dotHalf[data-owner]{
+  background: rgba(255,255,255,.95);
+}
+
+/* Stealable/vulnerable (subtle hint ring) */
+.fretCell.vulnerable{ outline: 2px dashed rgba(255,255,255,.18); outline-offset: -3px; }
+
+.fretCell:hover{
+  border-color: rgba(255,255,255,.16);
+  background: rgba(255,255,255,.04);
+}
+
+.fretCell.active{
+  border-color: rgba(0,183,255,.65);
+  background: rgba(0,183,255,.10);
+}
+
+.fretCell.hit{
+  border-color: rgba(68,214,124,.9);
+  background: rgba(68,214,124,.12);
+}
+
+.fretCell.miss{
+  border-color: rgba(255,79,100,.9);
+  background: rgba(255,79,100,.10);
+}
+
+.fretCell.sam{
+  outline: 2px solid rgba(255, 204, 58, .92);
+  box-shadow: 0 0 0 2px rgba(255, 204, 58, .18);
+}
+
+/* Right keypad */
+.display{
+  height:44px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.20);
+  padding:0 12px;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  font-weight:950;
+}
+.keypad{
+  display:grid;
+  /* Number pad: 3 columns (7-9 / 4-6 / 1-3 / 0-DEL-ENT) */
+  grid-template-columns: repeat(3, 1fr);
+  gap:8px;
+}
+.keypad.keypad-25{
+  grid-template-columns: repeat(5, 1fr);
+  gap:6px;
+}
+.keypad.keypad-25 .key{
+  height:36px;
+  font-size:12px;
+}
+
+.key{
+  height:44px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.10);
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.14));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  cursor:pointer;
+}
+.key:disabled,
+.key.disabled{
+  cursor: not-allowed;
+  /* Keep number labels legible even when keys are disabled (out of range). */
+  opacity: 1;
+  color: rgba(240,247,255,.45);
+  border-color: rgba(255,255,255,.08);
+  background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.12));
+  filter: saturate(.4);
+}
+
+/* Selected key highlight (replaces the old keypad display window). */
+.key.active{
+  border-color: rgba(255,79,100,.9);
+  background: rgba(255,79,100,.10);
+  box-shadow: 0 0 0 2px rgba(255,79,100,.18);
+}
+/* No wide/tall keys in the number pad layout */
+
+/* Footer */
+.ge-footer{
+  padding:10px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.alerts{
+  flex:1;
+  height:100%;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.10);
+  background: linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.26));
+  padding:10px 12px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  overflow:hidden;
+}
+.alert-pill{
+  padding:8px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(0,183,255,.12);
+  font-weight:800;
+}
+
+.alert-pillBtn{
+  cursor:pointer;
+  user-select:none;
+}
+.alert-pillBtn:hover{
+  background: rgba(0,183,255,.18);
+}
+.alert-text{
+  color: rgba(215,230,255,.75);
+  font-size:13px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+/* Event Log overlay (troubleshooting) */
+.eventLogOverlay{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background: rgba(0,0,0,.55);
+  z-index: 2000;
+}
+.eventLogOverlay.show{ display:flex; }
+.eventLogCard{
+  width: min(980px, calc(100vw - 60px));
+  max-height: min(720px, calc(100vh - 60px));
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
+.eventLogHeader{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 14px;
+  border-bottom:1px solid rgba(255,255,255,.10);
+}
+.eventLogTitle{ font-weight:900; letter-spacing:.3px; }
+.eventLogActions{ display:flex; gap:10px; }
+.eventLogBody{
+  margin:0;
+  padding:12px 14px;
+  overflow:auto;
+  font-size:12px;
+  color: rgba(225,235,255,.88);
+  white-space:pre;
+}
+
+/* Small screens */
+@media (max-width: 860px){
+  .ge-main{
+    grid-template-columns: 220px 1fr;
+    grid-template-rows: 1fr auto;
+  }
+  .ge-right{
+    grid-column: 1 / -1;
+    flex-direction:row;
+  }
+  .ge-right .section{ flex:1; }
+}
+
+/* -------- Left Menu: compact ops + settings forms -------- */
+.ge-shell{ position:relative; }
+
+.opsGrid{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:8px;
+}
+
+.btn.btn-sm{
+  padding:8px 10px;
+  font-size:12px;
+}
+
+.btn.btn-sm .dot{
+  width:9px;
+  height:9px;
+}
+
+.scrollCol{
+  flex:1;
+  min-height:0;
+  overflow:auto;
+  display:flex;
+  flex-direction:column;
+  gap:var(--gap);
+  padding-right:4px;
+}
+
+.subTitle{
+  margin:10px 0 6px;
+  font-weight:900;
+  font-size:12px;
+  color:rgba(215,230,255,.9);
+  letter-spacing:.06em;
+}
+
+.formRow{
+  display:grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap:10px;
+  align-items:center;
+  padding:6px 0;
+}
+
+.formHint{
+  grid-column: 1 / -1;
+  margin-top:-2px;
+  font-size:11px;
+  color:rgba(215,230,255,.62);
+}
+
+.paneForm{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.formLabel{
+  font-size:12px;
+  color:rgba(215,230,255,.78);
+}
+
+.formControl{ display:flex; justify-content:flex-end; }
+
+/* Inline controls used by formRowInline() */
+.inline{
+  display:flex;
+  gap:8px;
+  justify-content:flex-end;
+  align-items:flex-end;
+}
+
+.inlineLabeled{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  min-width:0;
+}
+.miniLabel{
+  font-size:10px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:rgba(215,230,255,.60);
+}
+
+.formHint,
+.formHintRow{
+  margin-top:8px;
+  font-size:12px;
+  color:rgba(215,230,255,.68);
+  line-height:1.35;
+}
+
+.devHidden{ display:none !important; }
+
+.inlineRow{
+  display:grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap:10px;
+  align-items:center;
+  padding:6px 0;
+}
+.inlineLabel{
+  font-size:12px;
+  color:rgba(215,230,255,.78);
+}
+.inlineControls{
+  display:flex;
+  gap:8px;
+  justify-content:flex-end;
+}
+
+.select,
+.numInput{
+  width:100%;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.22);
+  color:var(--text);
+  padding:8px 10px;
+  font-size:12px;
+  outline:none;
+}
+
+.numInput{ max-width:110px; }
+
+.select:focus,
+.numInput:focus{
+  border-color: rgba(77,215,255,.35);
+}
+
+.toggle{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:10px;
+}
+.toggle input{ width:18px; height:18px; }
+
+.checkGroup{
+  margin:8px 0 10px;
+  padding:10px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.08);
+  background: rgba(0,0,0,.14);
+}
+.groupTitle{
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color: rgba(215,230,255,.65);
+  margin:0 0 8px;
+}
+.checks{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:8px 10px;
+}
+.check{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  color: rgba(215,230,255,.85);
+}
+.check input{ width:16px; height:16px; }
+
+.helpRow{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:8px;
+}
+
+/* Compact tabs (right utility) */
+.tabs.compact{ padding:4px; gap:4px; }
+.tabs.compact .tab{ padding:7px 8px; font-size:11px; }
+
+/* -------- Splash overlay -------- */
+.splashOverlay{
+  position:absolute;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  background: rgba(0,0,0,.55);
+  backdrop-filter: blur(6px);
+  z-index:40;
+}
+.splashOverlay.show{ display:flex; }
+
+/* -------- Match start overlay (Ready / Engage) -------- */
+.matchStartOverlay{
+  position:absolute;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  background: rgba(0,0,0,.40);
+  backdrop-filter: blur(4px);
+  z-index:31;
+}
+.matchStartOverlay.show{ display:flex; }
+
+/* -------- Event Log overlay (debugging) -------- */
+.eventLogOverlay{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  background: rgba(0,0,0,.55);
+  backdrop-filter: blur(6px);
+  z-index:60;
+}
+.eventLogOverlay.show{ display:flex; }
+
+.eventLogCard{
+  width:min(980px, 96%);
+  max-height:min(760px, 90vh);
+  padding:14px;
+  border-radius:16px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.eventLogHeader{ display:flex; align-items:center; justify-content:space-between; gap:10px; }
+.eventLogTitle{ font-weight:950; font-size:16px; }
+.eventLogActions{ display:flex; gap:8px; }
+.eventLogBody{
+  flex:1;
+  margin:0;
+  padding:12px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.28);
+  overflow:auto;
+  font-size:12px;
+  line-height:1.35;
+  color: rgba(230,240,255,.88);
+}
+
+.matchStartCard{
+  width:min(560px, 92%);
+  padding:16px;
+  border-radius:16px;
+  text-align:center;
+}
+
+.matchStartTitle{ font-weight:950; font-size:22px; }
+.matchStartHint{ margin-top:10px; font-size:12px; color: rgba(215,230,255,.70); }
+.matchStartActions{ margin-top:12px; display:flex; justify-content:center; }
+
+/* -------- Intermission overlay (between multiplayer turns) -------- */
+.intermissionOverlay{
+  /* Render above all UI, independent of any parent stacking/overflow */
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  background: rgba(0,0,0,.40);
+  backdrop-filter: blur(4px);
+  z-index:999;
+}
+.intermissionOverlay.show{ display:flex; }
+
+.intermissionCard{
+  width:min(560px, 92%);
+  padding:16px;
+  border-radius:16px;
+  text-align:center;
+}
+
+.intermissionTitle{ font-weight:950; font-size:20px; }
+.intermissionNext{ margin-top:8px; font-size:14px; color: rgba(215,230,255,.85); }
+.intermissionTimer{ margin-top:10px; font-size:34px; font-weight:950; letter-spacing:.02em; }
+.intermissionHint{ margin-top:8px; font-size:12px; color: rgba(215,230,255,.65); }
+.intermissionActions{ margin-top:12px; display:flex; justify-content:center; }
+
+/* -------- Staff accidental prompt overlay -------- */
+.accidentalOverlay{
+  position:absolute;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  background: rgba(0,0,0,.40);
+  backdrop-filter: blur(4px);
+  z-index:32;
+}
+.accidentalOverlay.show{ display:flex; }
+
+.accidentalCard{
+  width:min(560px, 92%);
+  padding:16px;
+  border-radius:16px;
+  text-align:center;
+}
+
+.accidentalTitle{ font-weight:950; font-size:18px; }
+.accidentalHint{ margin-top:10px; font-size:12px; color: rgba(215,230,255,.70); }
+.accidentalActions{ margin-top:12px; display:flex; justify-content:center; gap:10px; flex-wrap:wrap; }
+
+.splashCard{
+  width:min(720px, 96%);
+  padding:16px;
+  border-radius:16px;
+}
+
+.splashTop{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.splashBrand{ font-weight:950; font-size:30px; }
+.splashSub{ color: rgba(215,230,255,.75); font-size:13px; margin-top:4px; }
+
+.splashActions{ display:flex; gap:8px; }
+
+.splashModes{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:12px;
+  margin-top:14px;
+}
+
+.splashBtn{
+  text-align:left;
+  padding:14px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.12);
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.12));
+  color:var(--text);
+  cursor:pointer;
+}
+.splashBtn:hover{ border-color: rgba(77,215,255,.35); }
+
+.splashBtnTitle{ font-weight:950; font-size:16px; }
+.splashBtnHint{ margin-top:6px; font-size:12px; color: rgba(215,230,255,.70); line-height:1.3; }
+
+.splashFooter{
+  margin-top:12px;
+  font-size:12px;
+  color: rgba(215,230,255,.65);
+}
+
+@media (max-width: 720px){
+  .splashModes{ grid-template-columns: 1fr; }
+  .checks{ grid-template-columns: 1fr; }
+}
+
+
+/* Compact tabs for operations */
+.tabs.tabs-compact{
+  padding:4px;
+  gap:4px;
+}
+.tabs.tabs-compact .tab{
+  padding:6px 8px;
+  font-size:11px;
+}
+
+/* Collapsible menu */
+.collapse{
+  margin-top:8px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.14);
+  overflow:hidden;
+}
+.collapseSummary{
+  list-style:none;
+  cursor:pointer;
+  padding:8px 10px;
+  font-size:12px;
+  color:rgba(215,230,255,.86);
+}
+.collapseSummary::-webkit-details-marker{ display:none; }
+.collapseBody{
+  padding:8px 10px 10px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+/* ---- Shell rail (compass / fixed reference) ---- */
+.noteRail .rail{
+  width:100%;
+  height:100%;
+  border:0;
+  border-radius:0;
+  background: transparent;
+  padding:0;
+  box-sizing:border-box;
+}
+.rail-window{ overflow: hidden; width: 100%; }
+.rail-track{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  width: max-content;
+  will-change: transform;
+}
+.rail-cell{
+  width: 46px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  user-select: none;
+}
+.rail-cell .sub{ font-size: 11px; opacity: .9; }
+.rail-centerMarker{
+  position: absolute;
+  left: 50%;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  transform: translateX(-50%);
+  background: rgba(77,215,255,.65);
+  box-shadow: 0 0 0 3px rgba(0,0,0,.18);
+  pointer-events: none;
+}
+.rail-current{
+  box-shadow: 0 0 0 2px rgba(0,183,255,.35);
+  border-color: rgba(0,183,255,.45);
+}
+
+/* ------------------------------------------------------------
+   NOTE RAIL (Shell rail.ts) — class names are camelCase
+   Ensures the Note Strip renders as a horizontal "compass" rail.
+------------------------------------------------------------ */
+.noteRailMount{ width:100%; height:100%; }
+
+/* The rail root created by src/shell/rail.ts */
+.noteRail .rail{
+  width:100%;
+  height:100%;
+  border-radius:10px;
+  border:none;
+  background: transparent;
+  padding:0;
+  box-sizing:border-box;
+}
+
+.noteRail .railViewport{
+  width:100%;
+  height:100%;
+  overflow:hidden;
+}
+
+.noteRail .railTrack{
+  width:100%;
+  height:100%;
+  display:grid;
+  grid-template-columns: repeat(25, minmax(0, 1fr));
+  gap: var(--railGap);
+  align-items:center;
+  transform: none;
+  transition: none;
+}
+
+.noteRail .railCell{
+  min-width:0;
+  height: clamp(40px, 6.6vh, 52px);
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.22);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  padding:0 2px;
+}
+
+.noteRail .railCell:hover{
+  border-color: rgba(77,215,255,.22);
+  background: rgba(0,0,0,.28);
+}
+
+.noteRail .railCell.accidental{
+  border-color: rgba(255,185,0,.18);
+  background: rgba(255,185,0,.06);
+}
+
+.noteRail .railCell.target{
+  outline:1px solid rgba(77,215,255,.55);
+  box-shadow: 0 0 0 2px rgba(0,183,255,.12);
+}
+
+.noteRail .railCell.target.req-shr .railSplitSharp{
+  opacity:1;
+  font-weight:900;
+}
+.noteRail .railCell.target.req-shr .railSplitFlat{
+  opacity:.35;
+}
+.noteRail .railCell.target.req-flt .railSplitFlat{
+  opacity:1;
+  font-weight:900;
+}
+.noteRail .railCell.target.req-flt .railSplitSharp{
+  opacity:.35;
+}
+
+.noteRail .railSplitSharp,
+.noteRail .railSplitFlat{
+  cursor:pointer;
+}
+.noteRail .railSplitSharp.disabled,
+.noteRail .railSplitFlat.disabled{
+  cursor:not-allowed;
+}
+
+.noteRail .railLabel{
+  font-weight:800;
+  font-size: clamp(10px, 1.0vw, 13px);
+  letter-spacing:.02em;
+  color: rgba(240,247,255,.92);
+  max-width:100%;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+/* Surface-layer visibility: never remove the rail, only hide its label content. */
+.noteRail .rail.layerViewOff .railLabel{
+  visibility:hidden;
+}
+
+.noteRail .railSplit{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:2px;
+  line-height:1;
+  width:100%;
+  max-width:100%;
+}
+
+.noteRail .railSplitSharp.disabled,
+.noteRail .railSplitFlat.disabled{
+  opacity:.35;
+}
+
+.noteRail .halfBlock{ font-size: clamp(9px, .9vw, 12px); }
+.noteRail .fltOff,
+.noteRail .shrOff{ opacity:.85; }
+
+/* Misc Information panel helpers */
+.miscPane{
+  min-height:88px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.20);
+  padding:10px;
+  color: rgba(215,230,255,.70);
+  font-size:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.paneForm{
+  padding:10px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+/* Leaderboard list embedded in Misc Information */
+.leader-list{
+  max-height:120px;
+  overflow:auto;
+}
+
+
+/* --- Surface Mount Contract ---
+   Core surface sections must remain mounted to avoid canvas sizing / blank-render bugs.
+   When a surface is not in use, we suppress it visually instead of removing it from layout. */
+.section.isSuppressed{
+  opacity: 0.18;
+  filter: grayscale(0.35) brightness(0.92);
+}
+.section.isSuppressed .svgOverlay,
+.section.isSuppressed canvas{
+  pointer-events: none;
+}
+
+
+/* Prompt banner (note rail) */
+.promptBanner{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 10px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  margin-bottom: 8px;
+  background: rgba(0,0,0,0.18);
+}
+.promptBannerLabel{
+  font-size: 12px;
+  opacity: 0.75;
+  letter-spacing: 0.3px;
+}
+.promptBannerValue{
+  font-size: 14px;
+  font-weight: 700;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 70%;
+}
+
+
+/* Surface clip: prevents staff drawing/marks from bleeding into adjacent surfaces */
+.surfaceClip{
+  overflow: hidden;
+  position: relative;
+}
+.surfaceClip canvas{
+  display: block;
+  max-width: 100%;
+}
+
+/* Improve canvas contrast for notation surfaces */
+#staffCanvas, #tabCanvas{
+  background: rgba(0,0,0,0.10);
+  border-radius: 8px;
+}
+
+
+/* Note Rail prompt + asked history + exhaustion */
+.noteTile.prompt{
+  outline: 2px solid rgba(255,255,255,0.7);
+  outline-offset: -2px;
+}
+.noteTile.asked{
+  opacity: 0.55;
+}
+#noteStrip-rail.railExhausted{
+  filter: grayscale(0.6);
+}
+
+.ge-moMiniSelect{width:100%;min-width:72px;max-width:140px;background:rgba(0,0,0,0.28);border:1px solid rgba(255,255,255,0.12);color:#fff;border-radius:10px;padding:6px 10px;font-size:12px;}
+.ge-moMiniCheck{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;}
+.ge-moMiniCheck input{width:16px;height:16px;}
+.ge-moSr{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;}
+.ge-moTabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;}
+.ge-moTabBtn{border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.03);color:#fff;border-radius:999px;padding:6px 12px;font-size:12px;cursor:pointer;}
+.ge-moTabBtn.is-active{background:rgba(255,255,255,0.10);border-color:rgba(255,255,255,0.18);}
+.ge-moTabBody{margin-top:10px;}
+.ge-moList{display:flex;flex-direction:column;gap:8px;}
+.ge-moListActions{display:flex;gap:8px;align-items:center;}
+.ge-moListRow{display:flex;gap:8px;align-items:center;}
+.ge-moInput--sm{max-width:220px;}
+.ge-moHintInline{opacity:0.72;margin-left:10px;font-size:12px;}
+.ge-moPill{display:flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,0.10);background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:999px;font-size:12px;}
+.ge-moPill input{width:16px;height:16px;}
+
+/* --- B2 Alignment Enforcement (no new design; stabilize layout) --- */
+/* Matrix must fit inside the fixed match-options wing without clipping or reflow. */
+.ge-moMatrixRow{grid-template-columns: 110px repeat(4, minmax(0, 1fr));}
+.ge-moMatrixCell{justify-content:stretch;}
+.ge-moMatrixCell--role{
+  display:grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  gap:8px;
+  align-items:center;
+  justify-content:stretch;
+}
+.ge-moMiniCheck{display:flex;align-items:center;justify-content:center;gap:8px;}
+.ge-moMiniSelect{
+  width:100%;
+  min-width:0;
+  max-width:none;
+  height:32px;
+  line-height:1.1;
+}
+/* Keep focus/active states from shifting layout */
+.ge-moMiniSelect, .ge-moSelect, .ge-moNumber{box-sizing:border-box;}
+.ge-moMiniSelect:focus, .ge-moSelect:focus, .ge-moNumber:focus{outline:2px solid rgba(0,183,255,0.35);outline-offset:2px;}
+
+/* Wing Fly-Out System (v1.2 layout contract) */
+.ge-advTitleBar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:12px 14px;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.ge-advHeader{
+  padding:10px 14px 12px;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  display:flex;
+  flex-direction:row;
+  gap:12px;
+  align-items:flex-start;
+  overflow-x:auto;
+}
+.ge-advHeaderSection{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  min-width:90px;
+}
+.ge-advHeaderLabel{
+  font-weight:700;
+  font-size:11px;
+  letter-spacing:0.4px;
+  opacity:0.88;
+  text-transform:uppercase;
+}
+.ge-advHeader .ge-moSelect{
+  font-size:12px;
+  padding:4px 6px;
+}
+.ge-advInstrumentGrid{
+  display:flex;
+  flex-direction:row;
+  gap:8px;
+  flex-wrap:nowrap;
+  overflow-x:auto;
+}
+/* Instrument host: treat nested section headers as noise. */
+.ge-advInstrumentGrid .ge-moSectionTitle{display:none;}
+.ge-advInstrumentGrid .ge-moSection{
+  margin-top:0;
+  padding:6px 10px;
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:8px;
+  background:rgba(255,255,255,0.03);
+  min-width:70px;
+  text-align:center;
+}
+
+.ge-advPresetsRow{
+  padding:10px 14px;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  display:grid;
+  grid-template-columns: 140px minmax(0,1fr);
+  gap:10px;
+  align-items:center;
+}
+.ge-advPresetsLabel{
+  font-weight:700;
+  font-size:12px;
+  letter-spacing:0.4px;
+  opacity:0.88;
+}
+.ge-advPresetsHost{min-width:0;}
+.ge-advPresetsInner .ge-moPresetGrid{display:grid;grid-template-columns:repeat(10, minmax(0,1fr));gap:8px;}
+
+.ge-advGrids{flex:1;min-height:0;padding:12px 14px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;}
+.ge-advFooter{display:flex;gap:10px;padding:12px 14px;border-top:1px solid rgba(255,255,255,0.08);background:rgba(0,0,0,0.2);}
+.ge-advStartBtn{flex:2;padding:12px 20px;border-radius:8px;border:none;background:#10b981;color:#fff;font-size:14px;font-weight:700;cursor:pointer;transition:background 0.15s;}
+.ge-advStartBtn:hover{background:#059669;}
+.ge-advBackBtn{flex:1;padding:12px 20px;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.8);font-size:14px;font-weight:600;cursor:pointer;transition:all 0.15s;}
+.ge-advBackBtn:hover{background:rgba(255,255,255,0.1);}
+.ge-advTabsRow{display:flex;gap:6px;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.08);}
+.ge-advTabBtn{flex:1;padding:8px 6px;border-radius:6px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);color:rgba(255,255,255,0.6);cursor:pointer;font-size:11px;font-weight:600;text-align:center;transition:all 0.15s ease;}
+.ge-advTabBtn:hover{background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.8);}
+.ge-advTabBtn.active{background:rgba(255,255,255,0.12);color:#fff;border-color:rgba(255,255,255,0.2);}
+.ge-advContentPanel{display:flex;flex-direction:column;gap:10px;}
+.ge-advContentPanel.hidden{display:none;}
+.ge-advMainGrid{flex:1;min-height:0;display:grid;grid-template-columns: 1fr 1fr;gap:12px;}
+.ge-advBottomGrid{height:34%;min-height:180px;display:grid;grid-template-columns: 1fr 1fr;gap:12px;}
+
+.ge-advCol{
+  min-width:0;
+  min-height:0;
+  overflow:hidden; /* canon: no internal scrolling */
+  border:1px solid rgba(255,255,255,0.08);
+  background:rgba(255,255,255,0.03);
+  border-radius:12px;
+  padding:12px;
+}
+
+/* Prevent UI shift from focus outlines changing box metrics */
+.ge-advWing button,.ge-advWing select,.ge-advWing input{box-sizing:border-box;}
+
+
+/* Launch placeholders: keep spine columns visible even when empty */
+.ge-menuColPlaceholder{
+  opacity:0.25;
+  pointer-events:none;
+  /* Canon: spines remain visible, but must not create large dead space. */
+  width:44px;
+  max-width:44px;
+  padding:14px 6px;
+  overflow:hidden;
+}
+.ge-menuColPlaceholder .ge-menuTitle{color:transparent;}
+.ge-menuColPlaceholder .ge-menuList{min-height:260px;}

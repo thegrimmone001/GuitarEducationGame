@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "glg.progression.schema.v1.1",
+  "title": "GLG Progression (Builder + Per-step Overrides)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["enabled", "steps"],
+  "properties": {
+    "enabled": { "type": "boolean" },
+    "label": { "type": "string" },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["degree"],
+        "properties": {
+          "degree": { "type": "string", "minLength": 1, "description": "Mode-aware degree token, e.g., I, ii, V/V; semantics out of scope for Phase B-2." },
+          "override": { "type": "object", "additionalProperties": true, "description": "Per-step override bag (borrowed chords, secondary dominants, etc.)." }
+        }
+      }
+    }
+  }
+}

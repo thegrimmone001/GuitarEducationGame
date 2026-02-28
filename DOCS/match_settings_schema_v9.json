@@ -1,0 +1,216 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "glg:match-settings:schema:v9",
+  "title": "Guitar Learning Game Match Settings (v9)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "surfaceControls", "timing", "boards"],
+  "properties": {
+    "version": { "type": "string", "const": "v9" },
+
+    "surfaceControls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["surfaces"],
+      "properties": {
+        "presets": {
+          "type": "string",
+          "enum": ["A","B","C","D","E","F","G","H","I","J"]
+        },
+        "pitchSets": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/pitchSet" }
+        },
+        "surfaces": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["fretboard", "staff", "tab", "noteRail"],
+          "properties": {
+            "fretboard": { "$ref": "#/$defs/surfaceBlock" },
+            "staff": { "$ref": "#/$defs/surfaceBlock" },
+            "tab": { "$ref": "#/$defs/surfaceBlock" },
+            "noteRail": { "$ref": "#/$defs/surfaceBlock" }
+          }
+        }
+      }
+    },
+
+    "timing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["turnWindowBehavior", "multiAnswerPerTurn"],
+      "properties": {
+        "turnTimer": { "$ref": "#/$defs/enabledSeconds" },
+        "gameTimer": {
+          "allOf": [
+            { "$ref": "#/$defs/enabledSeconds" },
+            {
+              "type": "object",
+              "properties": {
+                "startGate": {
+                  "type": "string",
+                  "const": "afterIntermissionGuiClosed",
+                  "description": "Canon: game timer does not start until Intermission GUI is closed."
+                }
+              },
+              "required": ["startGate"],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "checkClock": {
+          "allOf": [
+            { "$ref": "#/$defs/enabledSeconds" },
+            {
+              "type": "object",
+              "properties": {
+                "aka": {
+                  "type": "array",
+                  "items": { "type": "string", "enum": ["chessClock", "timeBank"] },
+                  "uniqueItems": true
+                },
+                "deduct": { "type": "string", "const": "perTurn" }
+              },
+              "required": ["deduct"],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "runtimeCap": { "$ref": "#/$defs/enabledSeconds" },
+        "increments": { "$ref": "#/$defs/enabledSeconds" },
+        "timeAddSubtract": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["enabled"],
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "addSecondsOnCorrect": { "type": "number" },
+            "subtractSecondsOnMiss": { "type": "number" }
+          }
+        },
+        "timePenalties": { "$ref": "#/$defs/enabledSeconds" },
+        "turnWindowBehavior": { "type": "string", "enum": ["fixed", "rolling", "hardCutoff"] },
+        "multiAnswerPerTurn": { "type": "boolean" }
+      }
+    },
+
+    "penaltiesAccuracy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "accuracyRequirement": { "type": "string", "enum": ["singleDomain", "multiDomain"] },
+        "accuracyScope": { "type": "string", "enum": ["perAnswer", "perTurn"] },
+        "penaltyTriggers": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["incorrectMark", "timeout", "incompleteAnswerSet", "earlySubmit"] },
+          "uniqueItems": true
+        },
+        "penaltyEffects": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["scorePenalty", "timePenalty", "turnLoss", "segmentBreak"] },
+          "uniqueItems": true
+        }
+      }
+    },
+
+    "boards": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "resetBehavior"],
+      "properties": {
+        "mode": { "type": "string", "enum": ["shared", "individual"] },
+        "resetBehavior": { "type": "string", "enum": ["perTurn", "perRound", "perMatch", "manual"] }
+      }
+    }
+  },
+
+  "$defs": {
+    "enabledSeconds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enabled"],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "seconds": { "type": "number", "minimum": 0 }
+      }
+    },
+    "surfaceScope": { "type": "string", "enum": ["single", "rotating", "all", "random"] },
+
+    "cardinality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["answerSet"],
+      "properties": {
+        "answerSet": { "type": "string", "enum": ["single", "equivalent", "octave", "all"] },
+        "answerCount": { "type": "integer", "minimum": 1 },
+        "octaveRange": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["min", "max"],
+          "properties": {
+            "min": { "type": "integer" },
+            "max": { "type": "integer" }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "answerSet": { "const": "octave" } }, "required": ["answerSet"] },
+          "then": { "required": ["octaveRange"] }
+        }
+      ]
+    },
+
+    "roleWithScope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enabled", "cardinality"],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "cardinality": { "$ref": "#/$defs/cardinality" },
+        "surfaceScope": { "$ref": "#/$defs/surfaceScope" }
+      }
+    },
+
+    "roleNoScope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enabled", "cardinality"],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "cardinality": { "$ref": "#/$defs/cardinality" }
+      }
+    },
+
+    "surfaceBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["prompt", "mark", "persistence", "sam"],
+      "properties": {
+        "prompt": { "$ref": "#/$defs/roleWithScope" },
+        "mark": { "$ref": "#/$defs/roleWithScope" },
+        "persistence": { "$ref": "#/$defs/roleNoScope" },
+        "sam": { "$ref": "#/$defs/roleNoScope" }
+      }
+    },
+
+    "pitchSet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "accidentals"],
+      "properties": {
+        "id": { "type": "string", "description": "Key/Scale/Mode identifier." },
+        "accidentals": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["naturals", "sharps", "flats"],
+          "properties": {
+            "naturals": { "type": "boolean" },
+            "sharps": { "type": "boolean" },
+            "flats": { "type": "boolean" }
+          }
+        }
+      }
+    }
+  }
+}

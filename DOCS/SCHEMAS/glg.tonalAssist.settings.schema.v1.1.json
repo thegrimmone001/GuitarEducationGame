@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "glg.tonalAssist.settings.schema.v1.1",
+  "title": "GLG Tonal Assist Settings (System Menu)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["enabled", "scope", "sensitivity", "suggestionLimit", "candidateSets"],
+  "properties": {
+    "enabled": { "type": "boolean" },
+    "scope": {
+      "type": "string",
+      "enum": ["currentEditedObject"],
+      "description": "Canon: callable from gameplay misc info panel and advanced builders, analyzing the current edited object."
+    },
+    "sensitivity": { "type": "string", "enum": ["low", "medium", "high"] },
+    "suggestionLimit": { "type": "integer", "minimum": 0, "maximum": 50 },
+    "candidateSets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["major", "minorVariants", "modes", "majorBlues", "minorBlues"],
+      "properties": {
+        "major": { "type": "boolean" },
+        "minorVariants": { "type": "boolean" },
+        "modes": { "type": "boolean" },
+        "majorBlues": { "type": "boolean" },
+        "minorBlues": { "type": "boolean" }
+      }
+    }
+  }
+}
